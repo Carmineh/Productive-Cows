@@ -19,3 +19,7 @@ hs_err_pid*
 
 # Common working directory
 run
+
+# Private Roadmap file
+ROADMAP.MD
+roadmap.md
