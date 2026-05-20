@@ -83,6 +83,10 @@ public class Materialcows {
             () -> new LiquidCoolerBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL).strength(3.5F).requiresCorrectToolForDrops().noOcclusion()));
     public static final DeferredItem<BlockItem> LIQUID_COOLER_ITEM = ITEMS.registerSimpleBlockItem("liquid_cooler", LIQUID_COOLER);
 
+    public static final DeferredBlock<Block> MILK_GENERATOR = BLOCKS.register("milk_generator",
+            () -> new com.materialcows.block.MilkGeneratorBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL).strength(3.5F).requiresCorrectToolForDrops().noOcclusion()));
+    public static final DeferredItem<BlockItem> MILK_GENERATOR_ITEM = ITEMS.registerSimpleBlockItem("milk_generator", MILK_GENERATOR);
+
     // Items
     public static final DeferredItem<Item> SPEED_UPGRADE = ITEMS.register("speed_upgrade",
             () -> new Item(new Item.Properties().stacksTo(3)));
@@ -144,6 +148,10 @@ public class Materialcows {
             () -> BlockEntityType.Builder.of(LiquidCoolerBlockEntity::new, LIQUID_COOLER.get()).build(null)
     );
 
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<com.materialcows.block.entity.MilkGeneratorBlockEntity>> MILK_GENERATOR_BE = BLOCK_ENTITY_TYPES.register("milk_generator",
+            () -> BlockEntityType.Builder.of(com.materialcows.block.entity.MilkGeneratorBlockEntity::new, MILK_GENERATOR.get()).build(null)
+    );
+
     public static final DeferredHolder<MenuType<?>, MenuType<BreedingCageMenu>> BREEDING_CAGE_MENU = MENU_TYPES.register("breeding_cage",
             () -> net.neoforged.neoforge.common.extensions.IMenuTypeExtension.create(BreedingCageMenu::new)
     );
@@ -156,6 +164,10 @@ public class Materialcows {
             () -> net.neoforged.neoforge.common.extensions.IMenuTypeExtension.create(LiquidCoolerMenu::new)
     );
 
+    public static final DeferredHolder<MenuType<?>, MenuType<com.materialcows.menu.MilkGeneratorMenu>> MILK_GENERATOR_MENU = MENU_TYPES.register("milk_generator",
+            () -> net.neoforged.neoforge.common.extensions.IMenuTypeExtension.create(com.materialcows.menu.MilkGeneratorMenu::new)
+    );
+
     // Creative Tabs
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> ITEMS_BLOCKS_TAB = CREATIVE_MODE_TABS.register("items_blocks_tab",
             () -> CreativeModeTab.builder()
@@ -165,6 +177,7 @@ public class Materialcows {
                         output.accept(BREEDING_CAGE_ITEM.get());
                         output.accept(COW_CAGE_ITEM.get());
                         output.accept(LIQUID_COOLER_ITEM.get());
+                        output.accept(MILK_GENERATOR_ITEM.get());
                         output.accept(SPEED_UPGRADE.get());
                         output.accept(EFFICIENCY_UPGRADE.get());
                         output.accept(COW_STICK.get());

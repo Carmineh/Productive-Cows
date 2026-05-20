@@ -134,4 +134,5 @@ public class ModFluids {
     public static final RegisteredFluid LIQUID_EMERALD = register("liquid_emerald", "#17DD62", false);
     public static final RegisteredFluid MOLTEN_NETHERITE = register("molten_netherite", "#31292A", true);
     public static final RegisteredFluid LIQUID_ENDER = register("liquid_ender", "#0B4D42", false);
+    public static final RegisteredFluid LIQUID_MILK = register("liquid_milk", "#FDFDFD", false);
 }
