@@ -37,5 +37,21 @@ public class ModBusEvents {
                 Materialcows.LIQUID_COOLER_BE.get(),
                 (be, side) -> be.getFluidHandlerCapability()
         );
+
+        event.registerBlockEntity(
+                net.neoforged.neoforge.capabilities.Capabilities.ItemHandler.BLOCK,
+                Materialcows.MILK_GENERATOR_BE.get(),
+                (be, side) -> be.getItemHandlerCapability()
+        );
+        event.registerBlockEntity(
+                net.neoforged.neoforge.capabilities.Capabilities.FluidHandler.BLOCK,
+                Materialcows.MILK_GENERATOR_BE.get(),
+                (be, side) -> be.getFluidHandlerCapability()
+        );
+        event.registerBlockEntity(
+                net.neoforged.neoforge.capabilities.Capabilities.EnergyStorage.BLOCK,
+                Materialcows.MILK_GENERATOR_BE.get(),
+                (be, side) -> be.getEnergyStorageCapability()
+        );
     }
 }

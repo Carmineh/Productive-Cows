@@ -11,6 +11,7 @@
   "block.materialcows.cow_cage": "Cow Cage",
   "block.materialcows.liquid_cooler": "Liquid Cooler",
   "block.materialcows.breeding_cage": "Breeding Cage",
+  "block.materialcows.milk_generator": "Milk Generator",
   "item.materialcows.speed_upgrade": "Speed Upgrade",
   "item.materialcows.efficiency_upgrade": "Efficiency Upgrade",
   "item.materialcows.cow_stick": "Cow Stick",
@@ -20,7 +21,10 @@
   "container.materialcows.cow_cage": "Cow Cage",
   "container.materialcows.liquid_cooler": "Liquid Cooler",
   "container.materialcows.breeding_cage": "Breeding Cage",
+  "container.materialcows.milk_generator": "Milk Generator",
   "gui.materialcows.empty_tank": "Empty Tank",
+  "gui.materialcows.empty_milk_tank": "Empty Tank (Milk)",
+  "fluid.materialcows.milk_name": "Milk",
 
   "fluid.materialcows.liquid_clay": "Liquid Clay",
   "block.materialcows.liquid_clay": "Liquid Clay",
