@@ -32,11 +32,10 @@ public class MilkGeneratorMenu extends AbstractContainerMenu {
         this.data = data;
 
         if (be instanceof MilkGeneratorBlockEntity generator) {
-            // Slot 0: Bucket input. X=56, Y=17
             this.addSlot(new SlotItemHandler(generator.getInventory(), 0, 56, 17) {
                 @Override
                 public boolean mayPlace(ItemStack stack) {
-                    return stack.is(Items.MILK_BUCKET);
+                    return stack.is(Items.MILK_BUCKET) || stack.is(com.materialcows.fluid.ModFluids.LIQUID_MILK.bucket().get());
                 }
             });
             // Slot 1: Output empty bucket. X=56, Y=53
@@ -102,7 +101,7 @@ public class MilkGeneratorMenu extends AbstractContainerMenu {
                 }
             } else {
                 // Player inventory -> BE slots
-                if (itemstack1.is(Items.MILK_BUCKET)) {
+                if (itemstack1.is(Items.MILK_BUCKET) || itemstack1.is(com.materialcows.fluid.ModFluids.LIQUID_MILK.bucket().get())) {
                     if (!this.moveItemStackTo(itemstack1, 0, 1, false)) {
                         return ItemStack.EMPTY;
                     }

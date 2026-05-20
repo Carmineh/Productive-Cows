@@ -56,38 +56,34 @@ public class MilkGeneratorBlock extends Block implements EntityBlock {
 
     @Override
     protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
-        if (stack.is(Items.MILK_BUCKET)) {
+        boolean isVanillaMilk = stack.is(Items.MILK_BUCKET);
+        boolean isCustomMilk = stack.is(com.materialcows.fluid.ModFluids.LIQUID_MILK.bucket().get());
+        if (isVanillaMilk || isCustomMilk) {
             BlockEntity be = level.getBlockEntity(pos);
             if (be instanceof MilkGeneratorBlockEntity generator) {
                 FluidTank tank = generator.getFluidTank();
+                Fluid milkFluid = com.materialcows.fluid.ModFluids.LIQUID_MILK.source().get();
                 
-                Fluid milkFluid = BuiltInRegistries.FLUID.get(ResourceLocation.parse("neoforge:milk"));
-                if (milkFluid == Fluids.EMPTY) {
-                    milkFluid = BuiltInRegistries.FLUID.get(ResourceLocation.parse("minecraft:milk"));
-                }
-                
-                if (milkFluid != Fluids.EMPTY) {
-                    FluidStack milkStack = new FluidStack(milkFluid, 1000);
-                    int accepted = tank.fill(milkStack, IFluidHandler.FluidAction.SIMULATE);
-                    if (accepted >= 1000) {
-                        if (!level.isClientSide) {
-                            tank.fill(milkStack, IFluidHandler.FluidAction.EXECUTE);
-                            level.playSound(null, pos, SoundEvents.BUCKET_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
-                            
-                            ItemStack emptyBucket = new ItemStack(Items.BUCKET);
-                            if (!player.getAbilities().instabuild) {
-                                stack.shrink(1);
-                            }
-                            if (stack.isEmpty()) {
-                                player.setItemInHand(hand, emptyBucket);
-                            } else {
-                                if (!player.getInventory().add(emptyBucket)) {
-                                    player.drop(emptyBucket, false);
-                                }
+                FluidStack milkStack = new FluidStack(milkFluid, 1000);
+                int accepted = tank.fill(milkStack, IFluidHandler.FluidAction.SIMULATE);
+                if (accepted >= 1000) {
+                    if (!level.isClientSide) {
+                        tank.fill(milkStack, IFluidHandler.FluidAction.EXECUTE);
+                        level.playSound(null, pos, SoundEvents.BUCKET_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
+                        
+                        ItemStack emptyBucket = new ItemStack(Items.BUCKET);
+                        if (!player.getAbilities().instabuild) {
+                            stack.shrink(1);
+                        }
+                        if (stack.isEmpty()) {
+                            player.setItemInHand(hand, emptyBucket);
+                        } else {
+                            if (!player.getInventory().add(emptyBucket)) {
+                                player.drop(emptyBucket, false);
                             }
                         }
-                        return ItemInteractionResult.sidedSuccess(level.isClientSide);
                     }
+                    return ItemInteractionResult.sidedSuccess(level.isClientSide);
                 }
             }
         }

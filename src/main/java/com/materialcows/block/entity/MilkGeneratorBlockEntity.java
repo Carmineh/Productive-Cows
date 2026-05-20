@@ -59,7 +59,7 @@ public class MilkGeneratorBlockEntity extends BlockEntity implements MenuProvide
         @Override
         public boolean isItemValid(int slot, ItemStack stack) {
             if (slot == 0) {
-                return stack.is(Items.MILK_BUCKET);
+                return stack.is(Items.MILK_BUCKET) || stack.is(com.materialcows.fluid.ModFluids.LIQUID_MILK.bucket().get());
             }
             return false; // Slot 1 is output only
         }
@@ -88,11 +88,12 @@ public class MilkGeneratorBlockEntity extends BlockEntity implements MenuProvide
     private final FluidTank fluidTank = new FluidTank(4000) {
         @Override
         public boolean isFluidValid(FluidStack stack) {
-            Fluid milkFluid = BuiltInRegistries.FLUID.get(ResourceLocation.parse("neoforge:milk"));
-            if (milkFluid == Fluids.EMPTY) {
-                milkFluid = BuiltInRegistries.FLUID.get(ResourceLocation.parse("minecraft:milk"));
+            Fluid f = stack.getFluid();
+            if (f == com.materialcows.fluid.ModFluids.LIQUID_MILK.source().get()) {
+                return true;
             }
-            return stack.getFluid() == milkFluid;
+            String name = BuiltInRegistries.FLUID.getKey(f).toString();
+            return name.equals("neoforge:milk") || name.equals("minecraft:milk") || name.endsWith(":milk");
         }
 
         @Override
@@ -124,13 +125,8 @@ public class MilkGeneratorBlockEntity extends BlockEntity implements MenuProvide
             switch (index) {
                 case 0 -> energyStorage.setEnergy(value);
                 case 2 -> {
-                    Fluid milkFluid = BuiltInRegistries.FLUID.get(ResourceLocation.parse("neoforge:milk"));
-                    if (milkFluid == Fluids.EMPTY) {
-                        milkFluid = BuiltInRegistries.FLUID.get(ResourceLocation.parse("minecraft:milk"));
-                    }
-                    if (milkFluid != Fluids.EMPTY) {
-                        fluidTank.setFluid(new FluidStack(milkFluid, value));
-                    }
+                    Fluid milkFluid = com.materialcows.fluid.ModFluids.LIQUID_MILK.source().get();
+                    fluidTank.setFluid(new FluidStack(milkFluid, value));
                 }
             }
         }
@@ -234,13 +230,12 @@ public class MilkGeneratorBlockEntity extends BlockEntity implements MenuProvide
 
     private void tickBucketEmptying() {
         ItemStack inputBucket = itemHandler.getStackInSlot(0);
-        if (!inputBucket.isEmpty() && inputBucket.is(Items.MILK_BUCKET)) {
-            Fluid milkFluid = BuiltInRegistries.FLUID.get(ResourceLocation.parse("neoforge:milk"));
-            if (milkFluid == Fluids.EMPTY) {
-                milkFluid = BuiltInRegistries.FLUID.get(ResourceLocation.parse("minecraft:milk"));
-            }
-
-            if (milkFluid != Fluids.EMPTY) {
+        if (!inputBucket.isEmpty()) {
+            boolean isVanillaMilk = inputBucket.is(Items.MILK_BUCKET);
+            boolean isCustomMilk = inputBucket.is(com.materialcows.fluid.ModFluids.LIQUID_MILK.bucket().get());
+            
+            if (isVanillaMilk || isCustomMilk) {
+                Fluid milkFluid = com.materialcows.fluid.ModFluids.LIQUID_MILK.source().get();
                 FluidStack milkStack = new FluidStack(milkFluid, 1000);
                 int filled = fluidTank.fill(milkStack, IFluidHandler.FluidAction.SIMULATE);
                 if (filled >= 1000) {

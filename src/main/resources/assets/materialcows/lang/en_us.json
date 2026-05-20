@@ -84,5 +84,9 @@
 
   "fluid.materialcows.liquid_ender": "Liquid Ender",
   "block.materialcows.liquid_ender": "Liquid Ender",
-  "item.materialcows.liquid_ender_bucket": "Liquid Ender Bucket"
+  "item.materialcows.liquid_ender_bucket": "Liquid Ender Bucket",
+
+  "fluid.materialcows.liquid_milk": "Milk",
+  "block.materialcows.liquid_milk": "Liquid Milk",
+  "item.materialcows.liquid_milk_bucket": "Milk Bucket"
 }
