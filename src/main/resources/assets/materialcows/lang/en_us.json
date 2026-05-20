@@ -1,0 +1,84 @@
+{
+  "itemGroup.materialcows.items_blocks": "Material Cows - Items/Blocks",
+  "itemGroup.materialcows.liquids": "Material Cows - Liquids",
+  "itemGroup.materialcows.spawn_eggs": "Material Cows - Spawn Eggs",
+  "item.materialcows.spawn_egg_format": "%s Spawn Egg",
+  "block.materialcows.example_block": "Example Block",
+  "item.materialcows.example_item": "Example Item",
+  "item.materialcows.material_cow_spawn_egg": "Material Cow Spawn Egg",
+  "entity.materialcows.material_cow": "Material Cow",
+
+  "block.materialcows.cow_cage": "Cow Cage",
+  "block.materialcows.liquid_cooler": "Liquid Cooler",
+  "block.materialcows.breeding_cage": "Breeding Cage",
+  "item.materialcows.speed_upgrade": "Speed Upgrade",
+  "item.materialcows.efficiency_upgrade": "Efficiency Upgrade",
+  "item.materialcows.cow_stick": "Cow Stick",
+  "item.materialcows.captured_cow": "Captured Cow",
+  "tooltip.materialcows.captured_cow.breeding_cooldown": "Breeding Cooldown: %sm %ss",
+
+  "container.materialcows.cow_cage": "Cow Cage",
+  "container.materialcows.liquid_cooler": "Liquid Cooler",
+  "container.materialcows.breeding_cage": "Breeding Cage",
+  "gui.materialcows.empty_tank": "Empty Tank",
+
+  "fluid.materialcows.liquid_clay": "Liquid Clay",
+  "block.materialcows.liquid_clay": "Liquid Clay",
+  "item.materialcows.liquid_clay_bucket": "Liquid Clay Bucket",
+
+  "fluid.materialcows.molten_stone": "Molten Stone",
+  "block.materialcows.molten_stone": "Molten Stone",
+  "item.materialcows.molten_stone_bucket": "Molten Stone Bucket",
+
+  "fluid.materialcows.liquid_coal": "Liquid Coal",
+  "block.materialcows.liquid_coal": "Liquid Coal",
+  "item.materialcows.liquid_coal_bucket": "Liquid Coal Bucket",
+
+  "fluid.materialcows.liquid_obsidian": "Liquid Obsidian",
+  "block.materialcows.liquid_obsidian": "Liquid Obsidian",
+  "item.materialcows.liquid_obsidian_bucket": "Liquid Obsidian Bucket",
+
+  "fluid.materialcows.molten_copper": "Molten Copper",
+  "block.materialcows.molten_copper": "Molten Copper",
+  "item.materialcows.molten_copper_bucket": "Molten Copper Bucket",
+
+  "fluid.materialcows.molten_iron": "Molten Iron",
+  "block.materialcows.molten_iron": "Molten Iron",
+  "item.materialcows.molten_iron_bucket": "Molten Iron Bucket",
+
+  "fluid.materialcows.liquid_redstone": "Liquid Redstone",
+  "block.materialcows.liquid_redstone": "Liquid Redstone",
+  "item.materialcows.liquid_redstone_bucket": "Liquid Redstone Bucket",
+
+  "fluid.materialcows.molten_gold": "Molten Gold",
+  "block.materialcows.molten_gold": "Molten Gold",
+  "item.materialcows.molten_gold_bucket": "Molten Gold Bucket",
+
+  "fluid.materialcows.liquid_lapis": "Liquid Lapis",
+  "block.materialcows.liquid_lapis": "Liquid Lapis",
+  "item.materialcows.liquid_lapis_bucket": "Liquid Lapis Bucket",
+
+  "fluid.materialcows.liquid_glowstone": "Liquid Glowstone",
+  "block.materialcows.liquid_glowstone": "Liquid Glowstone",
+  "item.materialcows.liquid_glowstone_bucket": "Liquid Glowstone Bucket",
+
+  "fluid.materialcows.liquid_quartz": "Liquid Quartz",
+  "block.materialcows.liquid_quartz": "Liquid Quartz",
+  "item.materialcows.liquid_quartz_bucket": "Liquid Quartz Bucket",
+
+  "fluid.materialcows.liquid_diamond": "Liquid Diamond",
+  "block.materialcows.liquid_diamond": "Liquid Diamond",
+  "item.materialcows.liquid_diamond_bucket": "Liquid Diamond Bucket",
+
+  "fluid.materialcows.liquid_emerald": "Liquid Emerald",
+  "block.materialcows.liquid_emerald": "Liquid Emerald",
+  "item.materialcows.liquid_emerald_bucket": "Liquid Emerald Bucket",
+
+  "fluid.materialcows.molten_netherite": "Molten Netherite",
+  "block.materialcows.molten_netherite": "Molten Netherite",
+  "item.materialcows.molten_netherite_bucket": "Molten Netherite Bucket",
+
+  "fluid.materialcows.liquid_ender": "Liquid Ender",
+  "block.materialcows.liquid_ender": "Liquid Ender",
+  "item.materialcows.liquid_ender_bucket": "Liquid Ender Bucket"
+}

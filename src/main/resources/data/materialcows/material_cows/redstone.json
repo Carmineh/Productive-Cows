@@ -1,0 +1,10 @@
+{
+  "name": "Redstone Cow",
+  "tier": 3,
+  "hex_color": "#FF0000",
+  "fluid": "materialcows:liquid_redstone",
+  "parent1": "materialcows:iron",
+  "parent2": "materialcows:coal",
+  "breed_chance": 0.25,
+  "cooling_result": "minecraft:redstone"
+}

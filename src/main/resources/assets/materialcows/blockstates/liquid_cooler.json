@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "materialcows:block/liquid_cooler" }
+  }
+}

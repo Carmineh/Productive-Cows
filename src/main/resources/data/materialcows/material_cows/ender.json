@@ -1,0 +1,10 @@
+{
+  "name": "Ender Cow",
+  "tier": 5,
+  "hex_color": "#0B4D42",
+  "fluid": "materialcows:liquid_ender",
+  "parent1": "materialcows:emerald",
+  "parent2": "materialcows:glowstone",
+  "breed_chance": 0.1,
+  "cooling_result": "minecraft:ender_pearl"
+}

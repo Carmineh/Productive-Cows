@@ -1,0 +1,8 @@
+{
+  "name": "Stone Cow",
+  "tier": 1,
+  "hex_color": "#737373",
+  "fluid": "materialcows:molten_stone",
+  "breed_chance": 1.0,
+  "cooling_result": "minecraft:cobblestone"
+}

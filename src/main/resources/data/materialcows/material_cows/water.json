@@ -1,0 +1,8 @@
+{
+  "name": "Water Cow",
+  "tier": 1,
+  "hex_color": "#3F76E4",
+  "fluid": "minecraft:water",
+  "breed_chance": 1.0,
+  "cooling_result": "minecraft:ice"
+}

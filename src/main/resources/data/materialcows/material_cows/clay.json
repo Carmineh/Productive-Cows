@@ -1,0 +1,8 @@
+{
+  "name": "Clay Cow",
+  "tier": 1,
+  "hex_color": "#948A7A",
+  "fluid": "materialcows:liquid_clay",
+  "breed_chance": 1.0,
+  "cooling_result": "minecraft:clay_ball"
+}

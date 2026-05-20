@@ -1,0 +1,8 @@
+{
+  "name": "Lava Cow",
+  "tier": 1,
+  "hex_color": "#FF3C00",
+  "fluid": "minecraft:lava",
+  "breed_chance": 1.0,
+  "cooling_result": "minecraft:obsidian"
+}
