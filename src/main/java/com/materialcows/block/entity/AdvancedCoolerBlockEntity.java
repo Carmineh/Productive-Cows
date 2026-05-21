@@ -92,6 +92,14 @@ public class AdvancedCoolerBlockEntity extends BlockEntity implements MenuProvid
         }
 
         @Override
+        public int getSlotLimit(int slot) {
+            if (slot == 2 || slot == 3 || slot == 5) {
+                return 3;
+            }
+            return super.getSlotLimit(slot);
+        }
+
+        @Override
         public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) {
             if (slot == 1 || slot == 4) return stack;
             return super.insertItem(slot, stack, simulate);
