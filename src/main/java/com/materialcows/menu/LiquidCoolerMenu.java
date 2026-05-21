@@ -76,11 +76,11 @@ public class LiquidCoolerMenu extends AbstractContainerMenu {
     }
 
     public int getCookTime() {
-        return data.get(0);
+        return data.get(2);
     }
 
     public int getCookTimeTotal() {
-        return data.get(1);
+        return data.get(3);
     }
 
     private ItemStack getFluidFromBucket(ItemStack stack) {

@@ -97,12 +97,6 @@ public class LiquidCoolerScreen extends AbstractContainerScreen<LiquidCoolerMenu
             int fillWidth = Math.min(32, (progress * 32) / total);
             // Draw progress bar with a gradient (light cyan/bright teal) inside the track
             guiGraphics.fillGradient(progressX, progressY + 2, progressX + fillWidth, progressY + 6, 0xFF00F0FF, 0xFF00FF88);
-            
-            // Draw a glowing indicator if progress is advanced
-            if (fillWidth > 26) {
-                guiGraphics.fill(progressX + 28, progressY, progressX + 29, progressY + 8, 0xFF00FF88);
-                guiGraphics.fill(progressX + 30, progressY + 1, progressX + 31, progressY + 7, 0xFF00FF88);
-            }
         }
     }
 
