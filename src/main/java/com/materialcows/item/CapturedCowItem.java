@@ -46,6 +46,19 @@ public class CapturedCowItem extends Item {
         CustomData customData = stack.get(DataComponents.ENTITY_DATA);
         if (customData != null) {
             CompoundTag tag = customData.copyTag();
+            if ("minecraft:cow".equals(tag.getString("id"))) {
+                net.minecraft.world.entity.animal.Cow cow = new net.minecraft.world.entity.animal.Cow(net.minecraft.world.entity.EntityType.COW, level);
+                if (stack.has(DataComponents.CUSTOM_NAME)) {
+                    cow.setCustomName(stack.get(DataComponents.CUSTOM_NAME));
+                }
+                cow.moveTo(spawnPos.getX() + 0.5D, spawnPos.getY(), spawnPos.getZ() + 0.5D, 0.0F, 0.0F);
+                level.addFreshEntity(cow);
+                level.playSound(null, spawnPos, SoundEvents.COW_AMBIENT, SoundSource.BLOCKS, 1.0F, 1.0F);
+                if (context.getPlayer() != null && !context.getPlayer().getAbilities().instabuild) {
+                    stack.shrink(1);
+                }
+                return InteractionResult.CONSUME;
+            }
             if (tag.contains("CowDefinitionId")) {
                 String idStr = tag.getString("CowDefinitionId");
                 ResourceLocation defId = ResourceLocation.tryParse(idStr);
@@ -87,6 +100,10 @@ public class CapturedCowItem extends Item {
         CustomData customData = stack.get(DataComponents.ENTITY_DATA);
         if (customData != null) {
             CompoundTag tag = customData.copyTag();
+            if ("minecraft:cow".equals(tag.getString("id"))) {
+                tooltip.add(Component.translatable("entity.minecraft.cow").withStyle(ChatFormatting.GRAY));
+                return;
+            }
             if (tag.contains("CowDefinitionId")) {
                 String idStr = tag.getString("CowDefinitionId");
                 ResourceLocation defId = ResourceLocation.tryParse(idStr);
@@ -137,6 +154,9 @@ public class CapturedCowItem extends Item {
         CustomData customData = stack.get(DataComponents.ENTITY_DATA);
         if (customData != null) {
             CompoundTag tag = customData.copyTag();
+            if ("minecraft:cow".equals(tag.getString("id"))) {
+                return Component.translatable("entity.minecraft.cow");
+            }
             if (tag.contains("CowDefinitionId")) {
                 String idStr = tag.getString("CowDefinitionId");
                 ResourceLocation defId = ResourceLocation.tryParse(idStr);
