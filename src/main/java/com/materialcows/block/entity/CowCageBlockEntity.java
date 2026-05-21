@@ -187,19 +187,15 @@ public class CowCageBlockEntity extends BlockEntity implements MenuProvider {
                 }
             }
         } else if (isVanillaCow()) {
-            if (milkingTimer > 0) {
-                milkingTimer--;
-                setChanged();
-            } else {
-                ItemStack emptyBucket = itemHandler.getStackInSlot(1);
-                ItemStack outputStack = itemHandler.getStackInSlot(2);
-                if (emptyBucket.is(Items.BUCKET) && (outputStack.isEmpty() || (outputStack.is(Items.MILK_BUCKET) && outputStack.getCount() < outputStack.getMaxStackSize()))) {
-                    itemHandler.getStackInSlot(1).shrink(1);
-                    if (outputStack.isEmpty()) {
-                        itemHandler.setStackInSlot(2, new ItemStack(Items.MILK_BUCKET));
-                    } else {
-                        outputStack.grow(1);
-                    }
+            Fluid fluid = com.materialcows.fluid.ModFluids.LIQUID_MILK.source().get();
+            FluidStack fluidStack = new FluidStack(fluid, 1000);
+            int filled = fluidTank.fill(fluidStack, IFluidHandler.FluidAction.SIMULATE);
+            if (filled >= 1000) {
+                if (milkingTimer > 0) {
+                    milkingTimer--;
+                    setChanged();
+                } else {
+                    fluidTank.fill(fluidStack, IFluidHandler.FluidAction.EXECUTE);
                     milkingTimer = 400;
                     setChanged();
                     lvl.sendBlockUpdated(pos, state, state, 3);
@@ -240,6 +236,9 @@ public class CowCageBlockEntity extends BlockEntity implements MenuProvider {
         if (emptyBucket.is(Items.BUCKET) && fluidTank.getFluidAmount() >= 1000) {
             Fluid fluid = fluidTank.getFluid().getFluid();
             Item filledBucketItem = fluid.getBucket();
+            if (fluid == com.materialcows.fluid.ModFluids.LIQUID_MILK.source().get()) {
+                filledBucketItem = Items.MILK_BUCKET;
+            }
             if (filledBucketItem != Items.AIR) {
                 ItemStack filledBucket = new ItemStack(filledBucketItem);
                 ItemStack outputStack = itemHandler.getStackInSlot(2);
