@@ -60,6 +60,9 @@ public class CowCageBlock extends Block implements EntityBlock {
                 if (tank.getFluidAmount() >= 1000) {
                     Fluid fluid = tank.getFluid().getFluid();
                     Item filledBucketItem = fluid.getBucket();
+                    if (fluid == com.materialcows.fluid.ModFluids.LIQUID_MILK.source().get()) {
+                        filledBucketItem = Items.MILK_BUCKET;
+                    }
                     if (filledBucketItem != Items.AIR) {
                         if (!level.isClientSide) {
                             tank.drain(1000, IFluidHandler.FluidAction.EXECUTE);
