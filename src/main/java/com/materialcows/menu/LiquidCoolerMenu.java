@@ -21,13 +21,13 @@ public class LiquidCoolerMenu extends AbstractContainerMenu {
 
     // Client Constructor
     public LiquidCoolerMenu(int windowId, Inventory inv, RegistryFriendlyByteBuf buf) {
-        this(windowId, inv, inv.player.level().getBlockEntity(buf.readBlockPos()), new SimpleContainerData(2));
+        this(windowId, inv, inv.player.level().getBlockEntity(buf.readBlockPos()), new SimpleContainerData(4));
     }
 
     // Common/Server Constructor
     public LiquidCoolerMenu(int windowId, Inventory inv, BlockEntity be, ContainerData data) {
         super(Materialcows.LIQUID_COOLER_MENU.get(), windowId);
-        checkContainerDataCount(data, 2);
+        checkContainerDataCount(data, 4);
         this.blockEntity = be;
         this.data = data;
 
