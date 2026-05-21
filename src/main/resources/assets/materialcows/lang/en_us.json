@@ -20,6 +20,12 @@
   "item.materialcows.cow_stick": "Cow Stick",
   "item.materialcows.captured_cow": "Captured Cow",
   "tooltip.materialcows.captured_cow.breeding_cooldown": "Breeding Cooldown: %sm %ss",
+  "tooltip.materialcows.jade.fluid": "Fluid: %s mB / %s mB",
+  "tooltip.materialcows.jade.progress": "Cooling: %s%%",
+  "tooltip.materialcows.jade.milking_cooldown": "Milking Cooldown: %s:%s",
+  "tooltip.materialcows.jade.milking_ready": "Ready to Milk!",
+  "tooltip.materialcows.jade.breeding_cooldown": "Breeding Cooldown: %s:%s",
+  "tooltip.materialcows.jade.breeding_ready": "Ready to Breed!",
 
   "container.materialcows.cow_cage": "Cow Cage",
   "container.materialcows.liquid_cooler": "Basic Cooler",

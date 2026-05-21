@@ -1,0 +1,11 @@
+{
+  "item.materialcows.speed_upgrade": "Potenziamento Velocità",
+  "item.materialcows.efficiency_upgrade": "Potenziamento Efficienza",
+  "item.materialcows.energy_upgrade": "Potenziamento Energia",
+  "item.materialcows.base_upgrade": "Potenziamento Base",
+  
+  "tooltip.materialcows.jade.milking_cooldown": "Mungitura: %s:%s",
+  "tooltip.materialcows.jade.milking_ready": "Pronta per essere munta!",
+  "tooltip.materialcows.jade.breeding_cooldown": "Riproduzione: %s:%s",
+  "tooltip.materialcows.jade.breeding_ready": "Pronta per la riproduzione!"
+}
