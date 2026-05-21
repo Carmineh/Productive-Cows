@@ -37,7 +37,7 @@ public class CowCageBlockEntity extends BlockEntity implements MenuProvider {
         @Override
         public boolean isItemValid(int slot, ItemStack stack) {
             if (slot == 0) {
-                return stack.is(Materialcows.CAPTURED_COW.get()) || stack.is(Materialcows.MATERIAL_COW_SPAWN_EGG.get());
+                return stack.is(Materialcows.CAPTURED_COW.get()) || stack.is(Materialcows.MATERIAL_COW_SPAWN_EGG.get()) || stack.is(Items.COW_SPAWN_EGG);
             }
             if (slot == 1) {
                 return stack.is(Items.BUCKET);
@@ -147,6 +147,23 @@ public class CowCageBlockEntity extends BlockEntity implements MenuProvider {
         return null;
     }
 
+    public boolean isVanillaCow() {
+        ItemStack eggStack = itemHandler.getStackInSlot(0);
+        if (eggStack.is(Items.COW_SPAWN_EGG)) {
+            return true;
+        }
+        if (eggStack.is(Materialcows.CAPTURED_COW.get())) {
+            net.minecraft.world.item.component.CustomData customData = eggStack.get(net.minecraft.core.component.DataComponents.ENTITY_DATA);
+            if (customData != null) {
+                CompoundTag tag = customData.copyTag();
+                if ("minecraft:cow".equals(tag.getString("id"))) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     public void tick(Level lvl, BlockPos pos, BlockState state) {
         tickBucketFilling();
 
@@ -167,6 +184,25 @@ public class CowCageBlockEntity extends BlockEntity implements MenuProvider {
                         setChanged();
                         lvl.sendBlockUpdated(pos, state, state, 3);
                     }
+                }
+            }
+        } else if (isVanillaCow()) {
+            if (milkingTimer > 0) {
+                milkingTimer--;
+                setChanged();
+            } else {
+                ItemStack emptyBucket = itemHandler.getStackInSlot(1);
+                ItemStack outputStack = itemHandler.getStackInSlot(2);
+                if (emptyBucket.is(Items.BUCKET) && (outputStack.isEmpty() || (outputStack.is(Items.MILK_BUCKET) && outputStack.getCount() < outputStack.getMaxStackSize()))) {
+                    itemHandler.getStackInSlot(1).shrink(1);
+                    if (outputStack.isEmpty()) {
+                        itemHandler.setStackInSlot(2, new ItemStack(Items.MILK_BUCKET));
+                    } else {
+                        outputStack.grow(1);
+                    }
+                    milkingTimer = 400;
+                    setChanged();
+                    lvl.sendBlockUpdated(pos, state, state, 3);
                 }
             }
         } else {

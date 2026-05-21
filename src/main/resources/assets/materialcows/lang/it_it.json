@@ -1,7 +1,10 @@
 {
   "item.materialcows.speed_upgrade": "Potenziamento Velocità",
+  "tooltip.materialcows.speed_upgrade": "Aumenta la velocità di processo. (Max 3)",
   "item.materialcows.efficiency_upgrade": "Potenziamento Efficienza",
+  "tooltip.materialcows.efficiency_upgrade": "Riduce il costo in fluido per oggetto. (Max 3)",
   "item.materialcows.energy_upgrade": "Potenziamento Energia",
+  "tooltip.materialcows.energy_upgrade": "Riduce il consumo energetico. (Max 3)",
   "item.materialcows.base_upgrade": "Potenziamento Base",
   
   "tooltip.materialcows.jade.milking_cooldown": "Mungitura: %s:%s",

@@ -92,10 +92,10 @@ public class Materialcows {
     public static final DeferredItem<BlockItem> ADVANCED_COOLER_ITEM = ITEMS.registerSimpleBlockItem("advanced_cooler", ADVANCED_COOLER);
 
     // Items
-    public static final DeferredItem<Item> SPEED_UPGRADE = ITEMS.register("speed_upgrade", () -> new Item(new Item.Properties().stacksTo(64)));
-    public static final DeferredItem<Item> EFFICIENCY_UPGRADE = ITEMS.register("efficiency_upgrade", () -> new Item(new Item.Properties().stacksTo(64)));
-    public static final DeferredItem<Item> ENERGY_UPGRADE = ITEMS.register("energy_upgrade", () -> new Item(new Item.Properties().stacksTo(64)));
     public static final DeferredItem<Item> BASE_UPGRADE = ITEMS.register("base_upgrade", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> SPEED_UPGRADE = ITEMS.register("speed_upgrade", () -> new com.materialcows.item.UpgradeItem(new Item.Properties().stacksTo(64), "tooltip.materialcows.speed_upgrade"));
+    public static final DeferredItem<Item> EFFICIENCY_UPGRADE = ITEMS.register("efficiency_upgrade", () -> new com.materialcows.item.UpgradeItem(new Item.Properties().stacksTo(64), "tooltip.materialcows.efficiency_upgrade"));
+    public static final DeferredItem<Item> ENERGY_UPGRADE = ITEMS.register("energy_upgrade", () -> new com.materialcows.item.UpgradeItem(new Item.Properties().stacksTo(64), "tooltip.materialcows.energy_upgrade"));
     public static final DeferredItem<Item> COW_STICK = ITEMS.register("cow_stick",
             () -> new CowStickItem(new Item.Properties().durability(64)));
     public static final DeferredItem<CapturedCowItem> CAPTURED_COW = ITEMS.register("captured_cow",
