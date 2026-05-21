@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "G": {
+      "item": "minecraft:glass"
+    },
+    "I": {
+      "tag": "c:ingots/iron"
+    },
+    "R": {
+      "tag": "c:dusts/redstone"
+    }
+  },
+  "pattern": [
+    "IGI",
+    "IRI",
+    "III"
+  ],
+  "result": {
+    "count": 1,
+    "id": "materialcows:liquid_cooler"
+  }
+}

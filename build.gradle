@@ -14,6 +14,13 @@ repositories {
         name = "Jared's maven"
         url = "https://maven.blamejared.com/"
     }
+    maven {
+        name = "Modrinth"
+        url = "https://api.modrinth.com/maven"
+        content {
+            includeGroup "maven.modrinth"
+        }
+    }
 }
 
 base {
@@ -104,6 +111,10 @@ dependencies {
     compileOnly "mezz.jei:jei-1.21.1-common-api:19.+"
     compileOnly "mezz.jei:jei-1.21.1-neoforge-api:19.+"
     runtimeOnly "mezz.jei:jei-1.21.1-neoforge:19.+"
+
+    // Jade / WAILA Integration (Optional)
+    compileOnly "maven.modrinth:jade:15.4.1+neoforge"
+    runtimeOnly "maven.modrinth:jade:15.4.1+neoforge"
 
 
     // Example mod dependency using a mod jar from ./libs with a flat dir repository

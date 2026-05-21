@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "materialcows:item/speed_upgrade"
+    "layer0": "materialcows:item/base_upgrade"
   }
 }

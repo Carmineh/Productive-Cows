@@ -41,6 +41,7 @@ public class MaterialCowsJEIPlugin implements IModPlugin {
         IGuiHelper guiHelper = registration.getJeiHelpers().getGuiHelper();
         registration.addRecipeCategories(new BreedingRecipeCategory(guiHelper));
         registration.addRecipeCategories(new CowConversionCategory(guiHelper));
+        registration.addRecipeCategories(new CoolerRecipeCategory(guiHelper));
     }
 
     @Override
@@ -63,16 +64,28 @@ public class MaterialCowsJEIPlugin implements IModPlugin {
         conversionRecipes.add(new CowConversionRecipe(List.of(new net.minecraft.world.item.ItemStack(net.minecraft.world.item.Items.CLAY), new net.minecraft.world.item.ItemStack(net.minecraft.world.item.Items.CLAY_BALL)), ResourceLocation.fromNamespaceAndPath(Materialcows.MODID, "clay")));
         conversionRecipes.add(new CowConversionRecipe(List.of(new net.minecraft.world.item.ItemStack(net.minecraft.world.item.Items.STONE), new net.minecraft.world.item.ItemStack(net.minecraft.world.item.Items.COBBLESTONE)), ResourceLocation.fromNamespaceAndPath(Materialcows.MODID, "stone")));
         registration.addRecipes(CowConversionCategory.CONVERSION_TYPE, conversionRecipes);
+
+        List<CowDefinition> coolerRecipes = new ArrayList<>();
+        for (CowDefinition def : Materialcows.getActiveDefinitions().values()) {
+            if (def.coolingResult() != null) {
+                coolerRecipes.add(def);
+            }
+        }
+        registration.addRecipes(CoolerRecipeCategory.COOLER_TYPE, coolerRecipes);
     }
 
     @Override
     public void registerRecipeCatalysts(mezz.jei.api.registration.IRecipeCatalystRegistration registration) {
         registration.addRecipeCatalyst(new net.minecraft.world.item.ItemStack(Materialcows.BREEDING_CAGE_ITEM.get()), BreedingRecipeCategory.BREEDING_TYPE);
         registration.addRecipeCatalyst(new net.minecraft.world.item.ItemStack(net.minecraft.world.item.Items.COW_SPAWN_EGG), CowConversionCategory.CONVERSION_TYPE);
+        registration.addRecipeCatalyst(new net.minecraft.world.item.ItemStack(Materialcows.LIQUID_COOLER_ITEM.get()), CoolerRecipeCategory.COOLER_TYPE);
+        registration.addRecipeCatalyst(new net.minecraft.world.item.ItemStack(Materialcows.ADVANCED_COOLER_ITEM.get()), CoolerRecipeCategory.COOLER_TYPE);
     }
 
     @Override
     public void registerGuiHandlers(mezz.jei.api.registration.IGuiHandlerRegistration registration) {
         registration.addRecipeClickArea(com.materialcows.client.screen.BreedingCageScreen.class, 75, 35, 34, 8, BreedingRecipeCategory.BREEDING_TYPE);
+        registration.addRecipeClickArea(com.materialcows.client.screen.LiquidCoolerScreen.class, 75, 35, 34, 8, CoolerRecipeCategory.COOLER_TYPE);
+        registration.addRecipeClickArea(com.materialcows.client.screen.AdvancedCoolerScreen.class, 75, 35, 34, 8, CoolerRecipeCategory.COOLER_TYPE);
     }
 }

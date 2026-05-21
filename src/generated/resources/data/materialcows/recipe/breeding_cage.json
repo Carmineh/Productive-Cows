@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "H": {
+      "item": "minecraft:hay_block"
+    },
+    "I": {
+      "item": "minecraft:iron_bars"
+    }
+  },
+  "pattern": [
+    "III",
+    "IHI",
+    "III"
+  ],
+  "result": {
+    "count": 1,
+    "id": "materialcows:breeding_cage"
+  }
+}

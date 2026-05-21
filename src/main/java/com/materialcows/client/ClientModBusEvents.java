@@ -30,6 +30,7 @@ public class ClientModBusEvents {
         event.register(com.materialcows.Materialcows.LIQUID_COOLER_MENU.get(), com.materialcows.client.screen.LiquidCoolerScreen::new);
         event.register(com.materialcows.Materialcows.BREEDING_CAGE_MENU.get(), com.materialcows.client.screen.BreedingCageScreen::new);
         event.register(com.materialcows.Materialcows.MILK_GENERATOR_MENU.get(), com.materialcows.client.screen.MilkGeneratorScreen::new);
+        event.register(com.materialcows.Materialcows.ADVANCED_COOLER_MENU.get(), com.materialcows.client.screen.AdvancedCoolerScreen::new);
     }
 
     @SubscribeEvent

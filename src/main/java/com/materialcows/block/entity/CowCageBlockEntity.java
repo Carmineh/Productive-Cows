@@ -175,6 +175,28 @@ public class CowCageBlockEntity extends BlockEntity implements MenuProvider {
                 setChanged();
             }
         }
+
+        tickAutoOutputFluid(lvl, pos);
+    }
+
+    private void tickAutoOutputFluid(Level lvl, BlockPos pos) {
+        if (fluidTank.getFluidAmount() > 0) {
+            for (net.minecraft.core.Direction dir : net.minecraft.core.Direction.values()) {
+                BlockPos targetPos = pos.relative(dir);
+                IFluidHandler neighborFluidHandler = lvl.getCapability(net.neoforged.neoforge.capabilities.Capabilities.FluidHandler.BLOCK, targetPos, dir.getOpposite());
+                if (neighborFluidHandler != null) {
+                    FluidStack toDrain = new FluidStack(fluidTank.getFluid().getFluid(), Math.min(1000, fluidTank.getFluidAmount()));
+                    int filled = neighborFluidHandler.fill(toDrain, IFluidHandler.FluidAction.EXECUTE);
+                    if (filled > 0) {
+                        fluidTank.drain(filled, IFluidHandler.FluidAction.EXECUTE);
+                        setChanged();
+                        if (fluidTank.isEmpty()) {
+                            break;
+                        }
+                    }
+                }
+            }
+        }
     }
 
     private void tickBucketFilling() {

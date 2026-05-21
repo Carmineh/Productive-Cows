@@ -51,8 +51,6 @@ public class LiquidCoolerScreen extends AbstractContainerScreen<LiquidCoolerMenu
         // Draw machine slots
         drawVanillaSlot(guiGraphics, x + 44, y + 17); // Bucket emptying input
         drawVanillaSlot(guiGraphics, x + 44, y + 53); // Output empty bucket
-        drawVanillaSlot(guiGraphics, x + 152, y + 17);  // Speed upgrade
-        drawVanillaSlot(guiGraphics, x + 152, y + 35); // Efficiency upgrade
         drawVanillaSlot(guiGraphics, x + 116, y + 35); // Output resource
 
         // Draw Player Inventory slots (3x9)

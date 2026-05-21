@@ -87,11 +87,15 @@ public class Materialcows {
             () -> new com.materialcows.block.MilkGeneratorBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL).strength(3.5F).requiresCorrectToolForDrops().noOcclusion()));
     public static final DeferredItem<BlockItem> MILK_GENERATOR_ITEM = ITEMS.registerSimpleBlockItem("milk_generator", MILK_GENERATOR);
 
+    public static final DeferredBlock<Block> ADVANCED_COOLER = BLOCKS.register("advanced_cooler",
+            () -> new com.materialcows.block.AdvancedCoolerBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL).strength(3.5F).requiresCorrectToolForDrops().noOcclusion()));
+    public static final DeferredItem<BlockItem> ADVANCED_COOLER_ITEM = ITEMS.registerSimpleBlockItem("advanced_cooler", ADVANCED_COOLER);
+
     // Items
-    public static final DeferredItem<Item> SPEED_UPGRADE = ITEMS.register("speed_upgrade",
-            () -> new Item(new Item.Properties().stacksTo(3)));
-    public static final DeferredItem<Item> EFFICIENCY_UPGRADE = ITEMS.register("efficiency_upgrade",
-            () -> new Item(new Item.Properties().stacksTo(3)));
+    public static final DeferredItem<Item> SPEED_UPGRADE = ITEMS.register("speed_upgrade", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> EFFICIENCY_UPGRADE = ITEMS.register("efficiency_upgrade", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> ENERGY_UPGRADE = ITEMS.register("energy_upgrade", () -> new Item(new Item.Properties().stacksTo(64)));
+    public static final DeferredItem<Item> BASE_UPGRADE = ITEMS.register("base_upgrade", () -> new Item(new Item.Properties().stacksTo(64)));
     public static final DeferredItem<Item> COW_STICK = ITEMS.register("cow_stick",
             () -> new CowStickItem(new Item.Properties().durability(64)));
     public static final DeferredItem<CapturedCowItem> CAPTURED_COW = ITEMS.register("captured_cow",
@@ -152,6 +156,10 @@ public class Materialcows {
             () -> BlockEntityType.Builder.of(com.materialcows.block.entity.MilkGeneratorBlockEntity::new, MILK_GENERATOR.get()).build(null)
     );
 
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<com.materialcows.block.entity.AdvancedCoolerBlockEntity>> ADVANCED_COOLER_BE = BLOCK_ENTITY_TYPES.register("advanced_cooler",
+            () -> BlockEntityType.Builder.of(com.materialcows.block.entity.AdvancedCoolerBlockEntity::new, ADVANCED_COOLER.get()).build(null)
+    );
+
     public static final DeferredHolder<MenuType<?>, MenuType<BreedingCageMenu>> BREEDING_CAGE_MENU = MENU_TYPES.register("breeding_cage",
             () -> net.neoforged.neoforge.common.extensions.IMenuTypeExtension.create(BreedingCageMenu::new)
     );
@@ -168,6 +176,10 @@ public class Materialcows {
             () -> net.neoforged.neoforge.common.extensions.IMenuTypeExtension.create(com.materialcows.menu.MilkGeneratorMenu::new)
     );
 
+    public static final DeferredHolder<MenuType<?>, MenuType<com.materialcows.menu.AdvancedCoolerMenu>> ADVANCED_COOLER_MENU = MENU_TYPES.register("advanced_cooler",
+            () -> net.neoforged.neoforge.common.extensions.IMenuTypeExtension.create(com.materialcows.menu.AdvancedCoolerMenu::new)
+    );
+
     // Creative Tabs
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> ITEMS_BLOCKS_TAB = CREATIVE_MODE_TABS.register("items_blocks_tab",
             () -> CreativeModeTab.builder()
@@ -178,8 +190,11 @@ public class Materialcows {
                         output.accept(COW_CAGE_ITEM.get());
                         output.accept(LIQUID_COOLER_ITEM.get());
                         output.accept(MILK_GENERATOR_ITEM.get());
+                        output.accept(ADVANCED_COOLER_ITEM.get());
                         output.accept(SPEED_UPGRADE.get());
                         output.accept(EFFICIENCY_UPGRADE.get());
+                        output.accept(ENERGY_UPGRADE.get());
+                        output.accept(BASE_UPGRADE.get());
                         output.accept(COW_STICK.get());
                     }).build());
 
@@ -260,18 +275,12 @@ public class Materialcows {
         NeoForge.EVENT_BUS.register(this);
 
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
-        modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+        modContainer.registerConfig(ModConfig.Type.SERVER, Config.SPEC);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         // Some common setup code
-        LOGGER.info("HELLO FROM COMMON SETUP");
-
-        if (Config.logDirtBlock) LOGGER.info("DIRT BLOCK >> {}", BuiltInRegistries.BLOCK.getKey(Blocks.DIRT));
-
-        LOGGER.info(Config.magicNumberIntroduction + Config.magicNumber);
-
-        Config.items.forEach((item) -> LOGGER.info("ITEM >> {}", item.toString()));
+        LOGGER.info("MaterialCows Common Setup");
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
