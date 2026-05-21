@@ -75,6 +75,34 @@ public class CoolerRecipeCategory implements IRecipeCategory<CowDefinition> {
                 builder.addSlot(RecipeIngredientRole.OUTPUT, 85, 21)
                         .addItemStack(new ItemStack(resultItem));
             }
+        } else if (recipe.coolingResultTag() != null) {
+            net.minecraft.tags.TagKey<net.minecraft.world.item.Item> tagKey = net.minecraft.tags.TagKey.create(net.minecraft.core.registries.Registries.ITEM, ResourceLocation.tryParse(recipe.coolingResultTag()));
+            java.util.List<ItemStack> stacks = new java.util.ArrayList<>();
+            
+            var lvl = net.minecraft.client.Minecraft.getInstance().level;
+            if (lvl != null) {
+                var registry = lvl.registryAccess().registry(net.minecraft.core.registries.Registries.ITEM).orElse(null);
+                if (registry != null) {
+                    var tagItem = registry.getTag(tagKey);
+                    if (tagItem.isPresent()) {
+                        for (net.minecraft.core.Holder<net.minecraft.world.item.Item> holder : tagItem.get()) {
+                            stacks.add(new ItemStack(holder.value()));
+                        }
+                    }
+                }
+            } else {
+                var tagItem = BuiltInRegistries.ITEM.getTag(tagKey);
+                if (tagItem.isPresent()) {
+                    for (net.minecraft.core.Holder<net.minecraft.world.item.Item> holder : tagItem.get()) {
+                        stacks.add(new ItemStack(holder.value()));
+                    }
+                }
+            }
+            
+            if (!stacks.isEmpty()) {
+                builder.addSlot(RecipeIngredientRole.OUTPUT, 85, 21)
+                       .addItemStacks(stacks);
+            }
         }
     }
 

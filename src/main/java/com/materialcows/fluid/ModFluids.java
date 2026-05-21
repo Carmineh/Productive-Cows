@@ -48,8 +48,8 @@ public class ModFluids {
         public RegisteredFluid(String name, int color, boolean isMolten) {
             this.name = name;
 
-            ResourceLocation still = isMolten ? LAVA_STILL : WATER_STILL;
-            ResourceLocation flowingTex = isMolten ? LAVA_FLOWING : WATER_FLOWING;
+            ResourceLocation still = WATER_STILL;
+            ResourceLocation flowingTex = WATER_FLOWING;
 
             int density = isMolten ? 3000 : 1000;
             int viscosity = isMolten ? 6000 : 1000;

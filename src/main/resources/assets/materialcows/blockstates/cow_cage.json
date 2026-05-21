@@ -1,5 +1,19 @@
 {
   "variants": {
-    "": { "model": "materialcows:block/cow_cage" }
+    "facing=north": {
+      "model": "materialcows:block/cow_cage"
+    },
+    "facing=east": {
+      "model": "materialcows:block/cow_cage",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "materialcows:block/cow_cage",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "materialcows:block/cow_cage",
+      "y": 270
+    }
   }
 }

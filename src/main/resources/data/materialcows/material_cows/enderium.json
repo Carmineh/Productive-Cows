@@ -1,11 +1,11 @@
 {
   "name": "Enderium",
   "tier": 6,
-  "fluidId": "materialcows:molten_enderium",
-  "materialColor": "#186A6B",
+  "fluid": "materialcows:molten_enderium",
+  "hex_color": "#186A6B",
   "breedChance": 0.01,
   "baseYield": 100,
   "parent1": "materialcows:lead",
   "parent2": "materialcows:diamond",
-  "coolingResultTag": "c:ingots/enderium"
+  "cooling_result_tag": "c:ingots/enderium"
 }

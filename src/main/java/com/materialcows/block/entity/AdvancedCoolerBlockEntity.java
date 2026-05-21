@@ -267,9 +267,12 @@ public class AdvancedCoolerBlockEntity extends BlockEntity implements MenuProvid
                     resultItem = BuiltInRegistries.ITEM.get(matchingDef.coolingResult());
                 } else if (matchingDef.coolingResultTag() != null) {
                     net.minecraft.tags.TagKey<Item> tagKey = net.minecraft.tags.TagKey.create(net.minecraft.core.registries.Registries.ITEM, ResourceLocation.tryParse(matchingDef.coolingResultTag()));
-                    java.util.Optional<net.minecraft.core.Holder<Item>> tagItem = BuiltInRegistries.ITEM.getTag(tagKey).flatMap(named -> named.stream().findFirst());
-                    if (tagItem.isPresent()) {
-                        resultItem = tagItem.get().value();
+                    var registry = lvl.registryAccess().registry(net.minecraft.core.registries.Registries.ITEM).orElse(null);
+                    if (registry != null) {
+                        java.util.Optional<net.minecraft.core.HolderSet.Named<Item>> tagItem = registry.getTag(tagKey);
+                        if (tagItem.isPresent() && tagItem.get().size() > 0) {
+                            resultItem = tagItem.get().get(0).value();
+                        }
                     }
                 }
 
@@ -378,6 +381,10 @@ public class AdvancedCoolerBlockEntity extends BlockEntity implements MenuProvid
             }
 
             BlockPos targetPos = pos.relative(dir);
+            BlockEntity neighborBE = lvl.getBlockEntity(targetPos);
+            if (neighborBE instanceof AdvancedCoolerBlockEntity || neighborBE instanceof LiquidCoolerBlockEntity) {
+                continue;
+            }
             IFluidHandler neighborFluidHandler = lvl.getCapability(Capabilities.FluidHandler.BLOCK, targetPos, dir.getOpposite());
             if (neighborFluidHandler != null) {
                 // If our local tank has fluid, we can only pull matching fluid. If empty, we can pull any coolable fluid.

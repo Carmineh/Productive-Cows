@@ -1,11 +1,11 @@
 {
   "name": "Brass",
   "tier": 3,
-  "fluidId": "materialcows:molten_brass",
-  "materialColor": "#E5BD54",
+  "fluid": "materialcows:molten_brass",
+  "hex_color": "#E5BD54",
   "breedChance": 0.05,
   "baseYield": 100,
   "parent1": "materialcows:zinc",
   "parent2": "materialcows:copper",
-  "coolingResultTag": "c:ingots/brass"
+  "cooling_result_tag": "c:ingots/brass"
 }

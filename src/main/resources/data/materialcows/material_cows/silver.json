@@ -1,11 +1,11 @@
 {
   "name": "Silver",
   "tier": 3,
-  "fluidId": "materialcows:molten_silver",
-  "materialColor": "#BFCAD1",
+  "fluid": "materialcows:molten_silver",
+  "hex_color": "#BFCAD1",
   "breedChance": 0.15,
   "baseYield": 100,
   "parent1": "materialcows:gold",
   "parent2": "materialcows:quartz",
-  "coolingResultTag": "c:ingots/silver"
+  "cooling_result_tag": "c:ingots/silver"
 }

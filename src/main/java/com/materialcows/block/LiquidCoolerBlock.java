@@ -1,5 +1,10 @@
 package com.materialcows.block;
 
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.item.context.BlockPlaceContext;
+
 import com.materialcows.Materialcows;
 import com.materialcows.block.entity.LiquidCoolerBlockEntity;
 import net.minecraft.core.BlockPos;
@@ -26,9 +31,11 @@ import net.neoforged.neoforge.fluids.capability.templates.FluidTank;
 import org.jetbrains.annotations.Nullable;
 
 public class LiquidCoolerBlock extends Block implements EntityBlock {
+    public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
 
     public LiquidCoolerBlock(Properties properties) {
         super(properties);
+        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, net.minecraft.core.Direction.NORTH));
     }
 
     @Nullable
@@ -108,4 +115,16 @@ public class LiquidCoolerBlock extends Block implements EntityBlock {
             super.onRemove(state, level, pos, newState, isMoving);
         }
     }
+
+    @Override
+    protected void createBlockStateDefinition(StateDefinition.Builder<net.minecraft.world.level.block.Block, net.minecraft.world.level.block.state.BlockState> builder) {
+        builder.add(FACING);
+    }
+
+    @org.jetbrains.annotations.Nullable
+    @Override
+    public net.minecraft.world.level.block.state.BlockState getStateForPlacement(BlockPlaceContext context) {
+        return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
+    }
+
 }

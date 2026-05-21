@@ -1,1 +1,1 @@
-﻿{"fluid":"materialcows:liquid_redstone","loader":"neoforge:fluid_container","parent":"neoforge:item/bucket"}
+{ "parent": "minecraft:item/generated", "textures": { "layer0": "materialcows:item/liquid_redstone_bucket" } }

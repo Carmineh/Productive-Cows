@@ -1,1 +1,1 @@
-﻿{"fluid":"materialcows:molten_iron","loader":"neoforge:fluid_container","parent":"neoforge:item/bucket"}
+{ "parent": "minecraft:item/generated", "textures": { "layer0": "materialcows:item/molten_iron_bucket" } }

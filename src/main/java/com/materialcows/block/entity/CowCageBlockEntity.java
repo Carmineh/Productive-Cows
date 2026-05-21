@@ -215,6 +215,9 @@ public class CowCageBlockEntity extends BlockEntity implements MenuProvider {
         if (fluidTank.getFluidAmount() > 0) {
             for (net.minecraft.core.Direction dir : net.minecraft.core.Direction.values()) {
                 BlockPos targetPos = pos.relative(dir);
+                if (lvl.getBlockEntity(targetPos) instanceof CowCageBlockEntity) {
+                    continue; // Do not push fluid into adjacent cow cages to prevent cross-contamination and loops
+                }
                 IFluidHandler neighborFluidHandler = lvl.getCapability(net.neoforged.neoforge.capabilities.Capabilities.FluidHandler.BLOCK, targetPos, dir.getOpposite());
                 if (neighborFluidHandler != null) {
                     FluidStack toDrain = new FluidStack(fluidTank.getFluid().getFluid(), Math.min(1000, fluidTank.getFluidAmount()));

@@ -1,5 +1,19 @@
 {
   "variants": {
-    "": { "model": "materialcows:block/liquid_cooler" }
+    "facing=north": {
+      "model": "materialcows:block/liquid_cooler"
+    },
+    "facing=east": {
+      "model": "materialcows:block/liquid_cooler",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "materialcows:block/liquid_cooler",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "materialcows:block/liquid_cooler",
+      "y": 270
+    }
   }
 }

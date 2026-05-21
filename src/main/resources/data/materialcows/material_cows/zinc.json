@@ -1,11 +1,11 @@
 {
   "name": "Zinc",
   "tier": 2,
-  "fluidId": "materialcows:molten_zinc",
-  "materialColor": "#8FB8A8",
+  "fluid": "materialcows:molten_zinc",
+  "hex_color": "#8FB8A8",
   "breedChance": 0.2,
   "baseYield": 100,
   "parent1": "materialcows:iron",
   "parent2": "materialcows:copper",
-  "coolingResultTag": "c:ingots/zinc"
+  "cooling_result_tag": "c:ingots/zinc"
 }

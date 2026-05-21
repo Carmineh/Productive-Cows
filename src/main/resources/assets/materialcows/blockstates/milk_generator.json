@@ -1,5 +1,19 @@
 {
   "variants": {
-    "": { "model": "materialcows:block/milk_generator" }
+    "facing=north": {
+      "model": "materialcows:block/milk_generator"
+    },
+    "facing=east": {
+      "model": "materialcows:block/milk_generator",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "materialcows:block/milk_generator",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "materialcows:block/milk_generator",
+      "y": 270
+    }
   }
 }

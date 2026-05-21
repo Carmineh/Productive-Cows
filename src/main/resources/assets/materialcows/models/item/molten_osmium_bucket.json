@@ -1,0 +1,1 @@
+{ "parent": "minecraft:item/generated", "textures": { "layer0": "materialcows:item/molten_osmium_bucket" } }

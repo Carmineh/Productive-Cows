@@ -1,11 +1,11 @@
 {
   "name": "Nickel",
   "tier": 3,
-  "fluidId": "materialcows:molten_nickel",
-  "materialColor": "#C8C697",
+  "fluid": "materialcows:molten_nickel",
+  "hex_color": "#C8C697",
   "breedChance": 0.15,
   "baseYield": 100,
   "parent1": "materialcows:iron",
   "parent2": "materialcows:copper",
-  "coolingResultTag": "c:ingots/nickel"
+  "cooling_result_tag": "c:ingots/nickel"
 }

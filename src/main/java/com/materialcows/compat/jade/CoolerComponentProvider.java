@@ -20,23 +20,6 @@ public class CoolerComponentProvider implements IBlockComponentProvider, IServer
     @Override
     public void appendTooltip(ITooltip tooltip, BlockAccessor accessor, IPluginConfig config) {
         CompoundTag data = accessor.getServerData();
-        
-        if (data.contains("Energy")) {
-            int energy = data.getInt("Energy");
-            int maxEnergy = data.getInt("MaxEnergy");
-            tooltip.add(Component.translatable("gui.materialcows.energy_stored", energy, maxEnergy).withStyle(net.minecraft.ChatFormatting.YELLOW));
-        }
-
-        if (data.contains("FluidAmount")) {
-            int fluidAmount = data.getInt("FluidAmount");
-            int fluidCapacity = data.getInt("FluidCapacity");
-            String fluidName = data.getString("FluidName");
-            if (fluidAmount > 0) {
-                tooltip.add(Component.literal(fluidName + ": " + fluidAmount + " / " + fluidCapacity + " mB").withStyle(net.minecraft.ChatFormatting.AQUA));
-            } else {
-                tooltip.add(Component.translatable("gui.materialcows.empty_tank").withStyle(net.minecraft.ChatFormatting.GRAY));
-            }
-        }
 
         if (data.contains("CookTime") && data.contains("CookTimeTotal")) {
             int cookTime = data.getInt("CookTime");

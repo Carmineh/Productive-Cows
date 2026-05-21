@@ -220,9 +220,12 @@ public class LiquidCoolerBlockEntity extends BlockEntity implements MenuProvider
                     resultItem = BuiltInRegistries.ITEM.get(matchingDef.coolingResult());
                 } else if (matchingDef.coolingResultTag() != null) {
                     net.minecraft.tags.TagKey<Item> tagKey = net.minecraft.tags.TagKey.create(net.minecraft.core.registries.Registries.ITEM, ResourceLocation.tryParse(matchingDef.coolingResultTag()));
-                    java.util.Optional<net.minecraft.core.Holder<Item>> tagItem = BuiltInRegistries.ITEM.getTag(tagKey).flatMap(named -> named.stream().findFirst());
-                    if (tagItem.isPresent()) {
-                        resultItem = tagItem.get().value();
+                    var registry = lvl.registryAccess().registry(net.minecraft.core.registries.Registries.ITEM).orElse(null);
+                    if (registry != null) {
+                        java.util.Optional<net.minecraft.core.HolderSet.Named<Item>> tagItem = registry.getTag(tagKey);
+                        if (tagItem.isPresent() && tagItem.get().size() > 0) {
+                            resultItem = tagItem.get().get(0).value();
+                        }
                     }
                 }
 

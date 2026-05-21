@@ -1,12 +1,10 @@
 <div align="center">
-  <!-- TODO: Insert Logo Here -->
-  <!-- <img src="logo.png" width="300"/> -->
+  <img src=".idea/icon.png" width="300"/>
 
   # MaterialCows
   
   [![NeoForge](https://img.shields.io/badge/NeoForge-1.21.1-orange.svg)](https://neoforged.net/)
   [![CurseForge](https://img.shields.io/badge/CurseForge-Available-f16436.svg)](https://curseforge.com)
-  [![Modrinth](https://img.shields.io/badge/Modrinth-Available-00AF5C.svg)](https://modrinth.com)
   [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 </div>
 

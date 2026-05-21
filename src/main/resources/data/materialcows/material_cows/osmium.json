@@ -1,11 +1,11 @@
 {
   "name": "Osmium",
   "tier": 3,
-  "fluidId": "materialcows:molten_osmium",
-  "materialColor": "#9CB7C7",
+  "fluid": "materialcows:molten_osmium",
+  "hex_color": "#9CB7C7",
   "breedChance": 0.15,
   "baseYield": 100,
   "parent1": "materialcows:iron",
   "parent2": "materialcows:quartz",
-  "coolingResultTag": "c:ingots/osmium"
+  "cooling_result_tag": "c:ingots/osmium"
 }

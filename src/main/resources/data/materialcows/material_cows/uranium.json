@@ -1,11 +1,11 @@
 {
   "name": "Uranium",
   "tier": 4,
-  "fluidId": "materialcows:molten_uranium",
-  "materialColor": "#6F8E6B",
+  "fluid": "materialcows:molten_uranium",
+  "hex_color": "#6F8E6B",
   "breedChance": 0.1,
   "baseYield": 100,
   "parent1": "materialcows:lead",
   "parent2": "materialcows:diamond",
-  "coolingResultTag": "c:ingots/uranium"
+  "cooling_result_tag": "c:ingots/uranium"
 }

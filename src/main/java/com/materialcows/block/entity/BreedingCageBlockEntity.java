@@ -181,7 +181,7 @@ public class BreedingCageBlockEntity extends BlockEntity implements MenuProvider
     private void applyBreedingCooldown(ItemStack stack) {
         CustomData customData = stack.get(DataComponents.ENTITY_DATA);
         CompoundTag tag = customData != null ? customData.copyTag() : new CompoundTag();
-        tag.putInt("BreedingCooldown", 6000);
+        tag.putInt("BreedingCooldown", 3000); // 2 minutes and 30 seconds
         stack.set(DataComponents.ENTITY_DATA, CustomData.of(tag));
     }
 

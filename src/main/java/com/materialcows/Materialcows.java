@@ -299,5 +299,11 @@ public class Materialcows {
             LOGGER.info("HELLO FROM CLIENT SETUP");
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
         }
+
+        @SubscribeEvent
+        public static void registerRenderers(net.neoforged.neoforge.client.event.EntityRenderersEvent.RegisterRenderers event) {
+            event.registerBlockEntityRenderer(ADVANCED_COOLER_BE.get(), com.materialcows.client.renderer.CoolerBlockEntityRenderer::new);
+            event.registerBlockEntityRenderer(LIQUID_COOLER_BE.get(), com.materialcows.client.renderer.CoolerBlockEntityRenderer::new);
+        }
     }
 }

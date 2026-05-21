@@ -1,11 +1,11 @@
 {
   "name": "Invar",
   "tier": 4,
-  "fluidId": "materialcows:molten_invar",
-  "materialColor": "#9BA09C",
+  "fluid": "materialcows:molten_invar",
+  "hex_color": "#9BA09C",
   "breedChance": 0.05,
   "baseYield": 100,
   "parent1": "materialcows:iron",
   "parent2": "materialcows:nickel",
-  "coolingResultTag": "c:ingots/invar"
+  "cooling_result_tag": "c:ingots/invar"
 }
