@@ -43,7 +43,17 @@ public class BreedingCageBlockEntity extends BlockEntity implements MenuProvider
             }
             return false; // slot 3 is output
         }
+
+        @Override
+        public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) {
+            if (slot == 3) return stack; // Cannot insert into output
+            return super.insertItem(slot, stack, simulate);
+        }
     };
+
+    public net.neoforged.neoforge.items.IItemHandler getItemHandlerCapability() {
+        return itemHandler;
+    }
 
     private int progress = 0;
     private int maxProgress = 200; // 10 seconds

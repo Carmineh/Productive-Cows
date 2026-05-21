@@ -22,6 +22,11 @@ public class ModBusEvents {
                 (be, side) -> be.getItemHandlerCapability()
         );
         event.registerBlockEntity(
+                net.neoforged.neoforge.capabilities.Capabilities.ItemHandler.BLOCK,
+                Materialcows.BREEDING_CAGE_BE.get(),
+                (be, side) -> be.getItemHandlerCapability()
+        );
+        event.registerBlockEntity(
                 net.neoforged.neoforge.capabilities.Capabilities.FluidHandler.BLOCK,
                 Materialcows.COW_CAGE_BE.get(),
                 (be, side) -> be.getFluidHandlerCapability()
