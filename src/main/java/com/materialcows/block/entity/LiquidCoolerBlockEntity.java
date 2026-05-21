@@ -220,10 +220,9 @@ public class LiquidCoolerBlockEntity extends BlockEntity implements MenuProvider
                     int cookTimeTotal = Math.max(1, com.materialcows.Config.basicCoolerCookTime);
                     int energyCostPerTick = Math.max(0, com.materialcows.Config.basicCoolerEnergyCost);
 
-                    if (fluidTank.getFluidAmount() >= 1000 && energyStorage.getEnergyStored() >= energyCostPerTick) {
+                    if (fluidTank.getFluidAmount() >= 1000) {
                         ItemStack outputSlot = itemHandler.getStackInSlot(4);
                         if (outputSlot.isEmpty() || (outputSlot.is(resultItem) && outputSlot.getCount() < outputSlot.getMaxStackSize())) {
-                            energyStorage.consumeEnergy(energyCostPerTick);
                             cookTime++;
                             if (cookTime >= cookTimeTotal) {
                                 fluidTank.drain(1000, IFluidHandler.FluidAction.EXECUTE);
