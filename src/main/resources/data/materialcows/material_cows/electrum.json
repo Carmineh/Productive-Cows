@@ -1,0 +1,11 @@
+{
+  "name": "Electrum",
+  "tier": 4,
+  "fluidId": "materialcows:molten_electrum",
+  "materialColor": "#F3D263",
+  "breedChance": 0.05,
+  "baseYield": 100,
+  "parent1": "materialcows:gold",
+  "parent2": "materialcows:silver",
+  "coolingResultTag": "c:ingots/electrum"
+}

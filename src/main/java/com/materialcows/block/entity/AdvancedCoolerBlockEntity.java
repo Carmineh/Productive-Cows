@@ -261,8 +261,18 @@ public class AdvancedCoolerBlockEntity extends BlockEntity implements MenuProvid
                 }
             }
 
-            if (matchingDef != null && matchingDef.coolingResult() != null) {
-                Item resultItem = BuiltInRegistries.ITEM.get(matchingDef.coolingResult());
+            if (matchingDef != null) {
+                Item resultItem = Items.AIR;
+                if (matchingDef.coolingResult() != null) {
+                    resultItem = BuiltInRegistries.ITEM.get(matchingDef.coolingResult());
+                } else if (matchingDef.coolingResultTag() != null) {
+                    net.minecraft.tags.TagKey<Item> tagKey = net.minecraft.tags.TagKey.create(net.minecraft.core.registries.Registries.ITEM, ResourceLocation.tryParse(matchingDef.coolingResultTag()));
+                    java.util.Optional<net.minecraft.core.Holder<Item>> tagItem = BuiltInRegistries.ITEM.getTag(tagKey).flatMap(named -> named.stream().findFirst());
+                    if (tagItem.isPresent()) {
+                        resultItem = tagItem.get().value();
+                    }
+                }
+
                 if (resultItem != Items.AIR) {
                     int speedUpgrades = Math.max(0, Math.min(3, itemHandler.getStackInSlot(2).getCount()));
                     int efficiencyUpgrades = Math.max(0, Math.min(3, itemHandler.getStackInSlot(3).getCount()));

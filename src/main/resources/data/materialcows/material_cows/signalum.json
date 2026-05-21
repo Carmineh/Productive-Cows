@@ -1,0 +1,11 @@
+{
+  "name": "Signalum",
+  "tier": 5,
+  "fluidId": "materialcows:molten_signalum",
+  "materialColor": "#E45924",
+  "breedChance": 0.02,
+  "baseYield": 100,
+  "parent1": "materialcows:copper",
+  "parent2": "materialcows:silver",
+  "coolingResultTag": "c:ingots/signalum"
+}

@@ -1,0 +1,11 @@
+{
+  "name": "Bronze",
+  "tier": 3,
+  "fluidId": "materialcows:molten_bronze",
+  "materialColor": "#D4943E",
+  "breedChance": 0.05,
+  "baseYield": 100,
+  "parent1": "materialcows:copper",
+  "parent2": "materialcows:tin",
+  "coolingResultTag": "c:ingots/bronze"
+}

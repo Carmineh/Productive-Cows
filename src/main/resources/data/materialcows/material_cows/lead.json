@@ -1,0 +1,11 @@
+{
+  "name": "Lead",
+  "tier": 2,
+  "fluidId": "materialcows:molten_lead",
+  "materialColor": "#79808E",
+  "breedChance": 0.2,
+  "baseYield": 100,
+  "parent1": "materialcows:iron",
+  "parent2": "materialcows:obsidian",
+  "coolingResultTag": "c:ingots/lead"
+}

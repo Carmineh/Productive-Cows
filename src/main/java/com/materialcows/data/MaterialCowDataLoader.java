@@ -36,8 +36,19 @@ public class MaterialCowDataLoader extends SimpleJsonResourceReloadListener {
             CowDefinition.CODEC.parse(JsonOps.INSTANCE, jsonElement)
                     .resultOrPartial(error -> LOGGER.error("Failed to parse material cow definition {}: {}", location, error))
                     .ifPresent(definition -> {
-                        // Apply the loaded ResourceLocation (e.g. materialcows:iron) as its ID
-                        newDefinitions.put(location, definition.withId(location));
+                        boolean isValid = true;
+                        
+                        if (!BuiltInRegistries.FLUID.containsKey(definition.fluidId())) {
+                            isValid = false;
+                        }
+                        
+                        if (definition.coolingResult() != null && !BuiltInRegistries.ITEM.containsKey(definition.coolingResult())) {
+                            isValid = false;
+                        }
+                        
+                        if (isValid) {
+                            newDefinitions.put(location, definition.withId(location));
+                        }
                     });
         });
 

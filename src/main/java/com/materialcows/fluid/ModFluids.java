@@ -135,4 +135,22 @@ public class ModFluids {
     public static final RegisteredFluid MOLTEN_NETHERITE = register("molten_netherite", "#31292A", true);
     public static final RegisteredFluid LIQUID_ENDER = register("liquid_ender", "#0B4D42", false);
     public static final RegisteredFluid LIQUID_MILK = register("liquid_milk", "#FDFDFD", false);
+
+    // Conditional Fluids
+    public static final RegisteredFluid MOLTEN_ZINC = net.neoforged.fml.ModList.get().isLoaded("create") ? register("molten_zinc", "#8FB8A8", true) : null;
+    public static final RegisteredFluid MOLTEN_BRASS = net.neoforged.fml.ModList.get().isLoaded("create") ? register("molten_brass", "#E5BD54", true) : null;
+
+    public static final RegisteredFluid MOLTEN_OSMIUM = net.neoforged.fml.ModList.get().isLoaded("mekanism") ? register("molten_osmium", "#9CB7C7", true) : null;
+    public static final RegisteredFluid MOLTEN_TIN = net.neoforged.fml.ModList.get().isLoaded("mekanism") || net.neoforged.fml.ModList.get().isLoaded("thermal") ? register("molten_tin", "#AAB9C4", true) : null;
+    public static final RegisteredFluid MOLTEN_LEAD = net.neoforged.fml.ModList.get().isLoaded("mekanism") || net.neoforged.fml.ModList.get().isLoaded("thermal") ? register("molten_lead", "#79808E", true) : null;
+    public static final RegisteredFluid MOLTEN_URANIUM = net.neoforged.fml.ModList.get().isLoaded("mekanism") ? register("molten_uranium", "#6F8E6B", true) : null;
+
+    public static final RegisteredFluid MOLTEN_SILVER = net.neoforged.fml.ModList.get().isLoaded("thermal") ? register("molten_silver", "#BFCAD1", true) : null;
+    public static final RegisteredFluid MOLTEN_NICKEL = net.neoforged.fml.ModList.get().isLoaded("thermal") ? register("molten_nickel", "#C8C697", true) : null;
+    public static final RegisteredFluid MOLTEN_BRONZE = net.neoforged.fml.ModList.get().isLoaded("thermal") ? register("molten_bronze", "#D4943E", true) : null;
+    public static final RegisteredFluid MOLTEN_ELECTRUM = net.neoforged.fml.ModList.get().isLoaded("thermal") ? register("molten_electrum", "#F3D263", true) : null;
+    public static final RegisteredFluid MOLTEN_INVAR = net.neoforged.fml.ModList.get().isLoaded("thermal") ? register("molten_invar", "#9BA09C", true) : null;
+    public static final RegisteredFluid MOLTEN_SIGNALUM = net.neoforged.fml.ModList.get().isLoaded("thermal") ? register("molten_signalum", "#E45924", true) : null;
+    public static final RegisteredFluid MOLTEN_LUMIUM = net.neoforged.fml.ModList.get().isLoaded("thermal") ? register("molten_lumium", "#F3EEA2", true) : null;
+    public static final RegisteredFluid MOLTEN_ENDERIUM = net.neoforged.fml.ModList.get().isLoaded("thermal") ? register("molten_enderium", "#186A6B", true) : null;
 }

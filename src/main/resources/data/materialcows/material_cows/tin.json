@@ -1,0 +1,11 @@
+{
+  "name": "Tin",
+  "tier": 2,
+  "fluidId": "materialcows:molten_tin",
+  "materialColor": "#AAB9C4",
+  "breedChance": 0.2,
+  "baseYield": 100,
+  "parent1": "materialcows:iron",
+  "parent2": "materialcows:coal",
+  "coolingResultTag": "c:ingots/tin"
+}

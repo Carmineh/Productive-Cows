@@ -214,8 +214,18 @@ public class LiquidCoolerBlockEntity extends BlockEntity implements MenuProvider
                 }
             }
 
-            if (matchingDef != null && matchingDef.coolingResult() != null) {
-                Item resultItem = BuiltInRegistries.ITEM.get(matchingDef.coolingResult());
+            if (matchingDef != null) {
+                Item resultItem = Items.AIR;
+                if (matchingDef.coolingResult() != null) {
+                    resultItem = BuiltInRegistries.ITEM.get(matchingDef.coolingResult());
+                } else if (matchingDef.coolingResultTag() != null) {
+                    net.minecraft.tags.TagKey<Item> tagKey = net.minecraft.tags.TagKey.create(net.minecraft.core.registries.Registries.ITEM, ResourceLocation.tryParse(matchingDef.coolingResultTag()));
+                    java.util.Optional<net.minecraft.core.Holder<Item>> tagItem = BuiltInRegistries.ITEM.getTag(tagKey).flatMap(named -> named.stream().findFirst());
+                    if (tagItem.isPresent()) {
+                        resultItem = tagItem.get().value();
+                    }
+                }
+
                 if (resultItem != Items.AIR) {
                     int cookTimeTotal = Math.max(1, com.materialcows.Config.basicCoolerCookTime);
                     int energyCostPerTick = Math.max(0, com.materialcows.Config.basicCoolerEnergyCost);
