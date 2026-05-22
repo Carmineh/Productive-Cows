@@ -9,6 +9,11 @@ import net.neoforged.neoforge.common.ModConfigSpec;
 public class Config {
     private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 
+    // Breeding Settings
+    private static final ModConfigSpec.IntValue BREEDING_COOLDOWN = BUILDER
+            .comment("Cooldown applied to parent cows after a successful breeding in ticks (20 ticks = 1 second).")
+            .defineInRange("breedingCooldownTicks", 3000, 0, Integer.MAX_VALUE);
+
     // Basic Cooler Settings
     private static final ModConfigSpec.IntValue BASIC_COOLER_CAPACITY = BUILDER
             .comment("Maximum RF capacity for the Basic Cooler.")
@@ -36,6 +41,8 @@ public class Config {
 
     public static final ModConfigSpec SPEC = BUILDER.build();
 
+    public static int breedingCooldownTicks;
+
     public static int basicCoolerCapacity;
     public static int basicCoolerEnergyCost;
     public static int basicCoolerCookTime;
@@ -47,6 +54,8 @@ public class Config {
 
     @SubscribeEvent
     static void onLoad(final ModConfigEvent event) {
+        breedingCooldownTicks = BREEDING_COOLDOWN.get();
+
         basicCoolerCapacity = BASIC_COOLER_CAPACITY.get();
         basicCoolerEnergyCost = BASIC_COOLER_ENERGY_COST.get();
         basicCoolerCookTime = BASIC_COOLER_COOK_TIME.get();

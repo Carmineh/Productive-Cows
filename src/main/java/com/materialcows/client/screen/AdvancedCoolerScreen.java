@@ -16,9 +16,11 @@ import java.util.List;
 
 public class AdvancedCoolerScreen extends AbstractContainerScreen<AdvancedCoolerMenu> {
 
+    private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(Materialcows.MODID, "textures/gui/advanced_cooler.png");
+
     public AdvancedCoolerScreen(AdvancedCoolerMenu menu, Inventory playerInventory, Component title) {
         super(menu, playerInventory, title);
-        this.imageWidth = 176;
+        this.imageWidth = 202;
         this.imageHeight = 166;
     }
 
@@ -44,32 +46,12 @@ public class AdvancedCoolerScreen extends AbstractContainerScreen<AdvancedCooler
         int x = (this.width - this.imageWidth) / 2;
         int y = (this.height - this.imageHeight) / 2;
 
-        // Draw vanilla gray 3D background panel
-        drawVanillaPanel(guiGraphics, x, y, this.imageWidth, this.imageHeight);
+        // Draw main custom background texture
+        guiGraphics.blit(TEXTURE, x, y, 0, 0, this.imageWidth, this.imageHeight, 220, 166);
 
-        // Draw machine slots
-        drawVanillaSlot(guiGraphics, x + 36, y + 17);  // Bucket emptying input
-        drawVanillaSlot(guiGraphics, x + 36, y + 53);  // Output empty bucket
-        drawVanillaSlot(guiGraphics, x + 154, y + 17); // Speed upgrade slot
-        drawVanillaSlot(guiGraphics, x + 154, y + 35); // Efficiency upgrade slot
-        drawVanillaSlot(guiGraphics, x + 154, y + 53); // Energy upgrade
-        drawVanillaSlot(guiGraphics, x + 104, y + 35); // Output cooled resource
-
-        // Draw Player Inventory slots (3x9)
-        for (int i = 0; i < 3; ++i) {
-            for (int j = 0; j < 9; ++j) {
-                drawVanillaSlot(guiGraphics, x + 8 + j * 18, y + 84 + i * 18);
-            }
-        }
-        // Player Hotbar slots (1x9)
-        for (int k = 0; k < 9; ++k) {
-            drawVanillaSlot(guiGraphics, x + 8 + k * 18, y + 142);
-        }
-
-        // --- GAUGE 1: COOLABLE FLUID TANK (Left: X=10, Y=17, Width=18, Height=52) ---
-        int fluidGaugeX = x + 10;
+        // --- GAUGE 1: COOLABLE FLUID TANK (Left: X=8, Y=17, Width=42, Height=52) ---
+        int fluidGaugeX = x + 8;
         int fluidGaugeY = y + 17;
-        drawVanillaSlotFrame(guiGraphics, fluidGaugeX - 1, fluidGaugeY - 1, fluidGaugeX + 19, fluidGaugeY + 53);
 
         int fluidAmount = menu.getFluidAmount();
         int fluidMax = menu.getFluidCapacity();
@@ -77,70 +59,40 @@ public class AdvancedCoolerScreen extends AbstractContainerScreen<AdvancedCooler
             net.neoforged.neoforge.fluids.capability.templates.FluidTank tank = cooler.getFluidTank();
             if (!tank.getFluid().isEmpty()) {
                 int color = getFluidColor(tank.getFluid().getFluid());
-                int fillHeight = Math.min(50, (fluidAmount * 50) / fluidMax);
-                int fluidTopY = fluidGaugeY + 51 - fillHeight;
-                // Draw colored fluid column
-                guiGraphics.fill(fluidGaugeX + 1, fluidTopY, fluidGaugeX + 17, fluidGaugeY + 51, 0xFF000000 | color);
-                // Draw shine overlay
-                guiGraphics.fill(fluidGaugeX + 1, fluidTopY, fluidGaugeX + 4, fluidGaugeY + 51, 0x40FFFFFF);
+                int fillHeight = Math.min(52, (fluidAmount * 52) / fluidMax);
+                int fluidTopY = fluidGaugeY + 52 - fillHeight;
+                // Draw colored fluid column taking the entire space
+                guiGraphics.fill(fluidGaugeX, fluidTopY, fluidGaugeX + 42, fluidGaugeY + 52, 0xFF000000 | color);
             }
         }
 
-        // --- GAUGE 2: RF ENERGY STORAGE (Right: X=132, Y=17, Width=18, Height=52) ---
-        int energyGaugeX = x + 132;
+        // --- GAUGE 2: RF ENERGY STORAGE (Right: X=156, Y=17, Width=14, Height=52) ---
+        int energyGaugeX = x + 156;
         int energyGaugeY = y + 17;
-        drawVanillaSlotFrame(guiGraphics, energyGaugeX - 1, energyGaugeY - 1, energyGaugeX + 19, energyGaugeY + 53);
 
         int energyAmount = menu.getEnergyStored();
         int energyMax = menu.getMaxEnergyStored();
         if (energyAmount > 0 && energyMax > 0) {
-            int fillHeight = Math.min(50, (energyAmount * 50) / energyMax);
-            int energyTopY = energyGaugeY + 51 - fillHeight;
-            // Draw energy bar (vibrant Red/Orange gradient: 0xFFFF2200 to 0xFFFF8800)
-            guiGraphics.fillGradient(energyGaugeX + 1, energyTopY, energyGaugeX + 17, energyGaugeY + 51, 0xFFFF2200, 0xFFFF8800);
-            // Draw shine overlay
-            guiGraphics.fill(energyGaugeX + 1, energyTopY, energyGaugeX + 4, energyGaugeY + 51, 0x40FFFFFF);
+            int fillHeight = Math.min(52, (energyAmount * 52) / energyMax);
+            int energyTopY = energyGaugeY + 52 - fillHeight;
+            // Draw energy bar overlay from the texture itself (located at 204, 1)
+            guiGraphics.blit(TEXTURE, energyGaugeX, energyTopY, 204, 1 + (52 - fillHeight), 14, fillHeight, 220, 166);
         }
 
-        // --- PROGRESS HORIZONTAL BAR (Center-Left to Center-Right: X=62, Y=38) ---
-        int progressX = x + 62;
-        int progressY = y + 38;
-        drawVanillaSlotFrame(guiGraphics, progressX - 1, progressY + 1, progressX + 33, progressY + 7);
+        // --- PROGRESS HORIZONTAL BAR (X=83, Y=42, Width=39, Height=2) ---
+        int progressX = x + 83;
+        int progressY = y + 42;
 
         int progress = menu.getCookTime();
         int total = menu.getCookTimeTotal();
         if (total > 0 && progress > 0) {
-            int fillWidth = Math.min(32, (progress * 32) / total);
-            // Draw progress bar with a gradient (light cyan/bright teal: 0xFF00F0FF to 0xFF00FF88)
-            guiGraphics.fillGradient(progressX, progressY + 2, progressX + fillWidth, progressY + 6, 0xFF00F0FF, 0xFF00FF88);
+            int fillWidth = Math.min(39, (progress * 39) / total);
+            // Draw progress bar filling
+            guiGraphics.fillGradient(progressX, progressY, progressX + fillWidth, progressY + 2, 0xFF00F0FF, 0xFF00FF88);
         }
     }
 
-    private void drawVanillaPanel(GuiGraphics guiGraphics, int x, int y, int width, int height) {
-        // Main panel body
-        guiGraphics.fill(x, y, x + width, y + height, 0xFFC6C6C6);
-        // Highlight borders (top and left)
-        guiGraphics.fill(x, y, x + width, y + 1, 0xFFFFFFFF);
-        guiGraphics.fill(x, y, x + 1, y + height, 0xFFFFFFFF);
-        // Shadow borders (bottom and right)
-        guiGraphics.fill(x, y + height - 1, x + width, y + height, 0xFF555555);
-        guiGraphics.fill(x + width - 1, y, x + width, y + height, 0xFF555555);
-    }
 
-    private void drawVanillaSlot(GuiGraphics guiGraphics, int slotX, int slotY) {
-        drawVanillaSlotFrame(guiGraphics, slotX - 1, slotY - 1, slotX + 17, slotY + 17);
-    }
-
-    private void drawVanillaSlotFrame(GuiGraphics guiGraphics, int x1, int y1, int x2, int y2) {
-        // Inner background of the slot
-        guiGraphics.fill(x1, y1, x2, y2, 0xFF8B8B8B);
-        // Top/Left dark inset shadows
-        guiGraphics.fill(x1, y1, x2, y1 + 1, 0xFF373737);
-        guiGraphics.fill(x1, y1, x1 + 1, y2, 0xFF373737);
-        // Bottom/Right light sporgenti reflections
-        guiGraphics.fill(x1, y2 - 1, x2, y2, 0xFFFFFFFF);
-        guiGraphics.fill(x2 - 1, y1, x2, y2, 0xFFFFFFFF);
-    }
 
     private int getFluidColor(net.minecraft.world.level.material.Fluid fluid) {
         ResourceLocation key = BuiltInRegistries.FLUID.getKey(fluid);
@@ -159,9 +111,9 @@ public class AdvancedCoolerScreen extends AbstractContainerScreen<AdvancedCooler
         int y = (this.height - this.imageHeight) / 2;
 
         // Fluid tank tooltip
-        int fluidX = x + 10;
+        int fluidX = x + 8;
         int fluidY = y + 17;
-        if (mouseX >= fluidX && mouseX < fluidX + 18 && mouseY >= fluidY && mouseY < fluidY + 52) {
+        if (mouseX >= fluidX && mouseX < fluidX + 42 && mouseY >= fluidY && mouseY < fluidY + 52) {
             List<Component> text = new ArrayList<>();
             int amount = menu.getFluidAmount();
             int max = menu.getFluidCapacity();
@@ -177,9 +129,9 @@ public class AdvancedCoolerScreen extends AbstractContainerScreen<AdvancedCooler
         }
 
         // Energy storage tooltip
-        int energyX = x + 132;
+        int energyX = x + 156;
         int energyY = y + 17;
-        if (mouseX >= energyX && mouseX < energyX + 18 && mouseY >= energyY && mouseY < energyY + 52) {
+        if (mouseX >= energyX && mouseX < energyX + 14 && mouseY >= energyY && mouseY < energyY + 52) {
             List<Component> text = new ArrayList<>();
             int energyAmount = menu.getEnergyStored();
             int energyMax = menu.getMaxEnergyStored();

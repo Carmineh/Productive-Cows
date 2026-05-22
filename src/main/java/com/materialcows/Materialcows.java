@@ -248,8 +248,11 @@ public class Materialcows {
     // The constructor for the mod class is the first code that is run when your mod is loaded.
     // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.
     public Materialcows(IEventBus modEventBus, ModContainer modContainer) {
-        // Register the commonSetup method for modloading
+        // Register the common setup method for modloading
         modEventBus.addListener(this::commonSetup);
+
+        // Register configuration
+        modContainer.registerConfig(net.neoforged.fml.config.ModConfig.Type.COMMON, com.materialcows.Config.SPEC);
 
         // Register static event subscribers
         modEventBus.register(com.materialcows.event.ModBusEvents.class);

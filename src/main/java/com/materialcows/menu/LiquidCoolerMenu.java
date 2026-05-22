@@ -32,23 +32,23 @@ public class LiquidCoolerMenu extends AbstractContainerMenu {
         this.data = data;
 
         if (be instanceof LiquidCoolerBlockEntity cooler) {
-            // Slot 0: Bucket emptying input. X=44, Y=17
-            this.addSlot(new SlotItemHandler(cooler.getInventory(), 0, 44, 17) {
+            // Slot 0: Bucket emptying input. X=59, Y=17
+            this.addSlot(new SlotItemHandler(cooler.getInventory(), 0, 59, 17) {
                 @Override
                 public boolean mayPlace(ItemStack stack) {
                     return getFluidFromBucket(stack) != null;
                 }
             });
-            // Slot 1: Output empty bucket. X=44, Y=53
-            this.addSlot(new SlotItemHandler(cooler.getInventory(), 1, 44, 53) {
+            // Slot 1: Output empty bucket. X=59, Y=53
+            this.addSlot(new SlotItemHandler(cooler.getInventory(), 1, 59, 53) {
                 @Override
                 public boolean mayPlace(ItemStack stack) {
                     return false;
                 }
             });
 
-            // Slot 4: Output resource. X=116, Y=35
-            this.addSlot(new SlotItemHandler(cooler.getInventory(), 4, 116, 35) {
+            // Slot 4: Output resource. X=133, Y=35
+            this.addSlot(new SlotItemHandler(cooler.getInventory(), 4, 133, 35) {
                 @Override
                 public boolean mayPlace(ItemStack stack) {
                     return false;

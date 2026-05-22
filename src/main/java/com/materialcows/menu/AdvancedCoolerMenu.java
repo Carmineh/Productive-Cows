@@ -32,43 +32,43 @@ public class AdvancedCoolerMenu extends AbstractContainerMenu {
         this.data = data;
 
         if (be instanceof AdvancedCoolerBlockEntity cooler) {
-            // Slot 0: Bucket emptying input. X=36, Y=17
-            this.addSlot(new SlotItemHandler(cooler.getInventory(), 0, 36, 17) {
+            // Slot 0: Bucket emptying input. X=59, Y=17
+            this.addSlot(new SlotItemHandler(cooler.getInventory(), 0, 59, 17) {
                 @Override
                 public boolean mayPlace(ItemStack stack) {
                     return getFluidFromBucket(stack) != null;
                 }
             });
-            // Slot 1: Output empty bucket. X=36, Y=53
-            this.addSlot(new SlotItemHandler(cooler.getInventory(), 1, 36, 53) {
+            // Slot 1: Output empty bucket. X=59, Y=53
+            this.addSlot(new SlotItemHandler(cooler.getInventory(), 1, 59, 53) {
                 @Override
                 public boolean mayPlace(ItemStack stack) {
                     return false;
                 }
             });
-            // Slot 2: Speed upgrade. X=154, Y=17
-            this.addSlot(new SlotItemHandler(cooler.getInventory(), 2, 154, 17) {
+            // Slot 2: Speed upgrade. X=178, Y=17
+            this.addSlot(new SlotItemHandler(cooler.getInventory(), 2, 178, 17) {
                 @Override
                 public boolean mayPlace(ItemStack stack) {
                     return stack.is(Materialcows.SPEED_UPGRADE.get());
                 }
             });
-            // Slot 3: Efficiency upgrade. X=154, Y=35
-            this.addSlot(new SlotItemHandler(cooler.getInventory(), 3, 154, 35) {
+            // Slot 3: Efficiency upgrade. X=178, Y=35
+            this.addSlot(new SlotItemHandler(cooler.getInventory(), 3, 178, 35) {
                 @Override
                 public boolean mayPlace(ItemStack stack) {
                     return stack.is(Materialcows.EFFICIENCY_UPGRADE.get());
                 }
             });
-            // Slot 4: Output resource. X=104, Y=35
-            this.addSlot(new SlotItemHandler(cooler.getInventory(), 4, 104, 35) {
+            // Slot 4: Output resource. X=133, Y=35
+            this.addSlot(new SlotItemHandler(cooler.getInventory(), 4, 133, 35) {
                 @Override
                 public boolean mayPlace(ItemStack stack) {
                     return false;
                 }
             });
-            // Slot 5: Energy upgrade. X=154, Y=53
-            this.addSlot(new SlotItemHandler(cooler.getInventory(), 5, 154, 53) {
+            // Slot 5: Energy upgrade. X=178, Y=53
+            this.addSlot(new SlotItemHandler(cooler.getInventory(), 5, 178, 53) {
                 @Override
                 public boolean mayPlace(ItemStack stack) {
                     return stack.is(Materialcows.ENERGY_UPGRADE.get());

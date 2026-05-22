@@ -31,6 +31,9 @@ public class ModFluids {
     public static final ResourceLocation WATER_FLOWING = ResourceLocation.parse("minecraft:block/water_flow");
     public static final ResourceLocation LAVA_STILL = ResourceLocation.parse("minecraft:block/lava_still");
     public static final ResourceLocation LAVA_FLOWING = ResourceLocation.parse("minecraft:block/lava_flow");
+    
+    public static final ResourceLocation MOLTEN_STILL = ResourceLocation.fromNamespaceAndPath(Materialcows.MODID, "block/molten_still");
+    public static final ResourceLocation MOLTEN_FLOWING = ResourceLocation.fromNamespaceAndPath(Materialcows.MODID, "block/molten_flow");
 
     public static final List<RegisteredFluid> ALL_FLUIDS = new ArrayList<>();
     public static final Map<String, RegisteredFluid> FLUIDS_MAP = new HashMap<>();
@@ -48,8 +51,8 @@ public class ModFluids {
         public RegisteredFluid(String name, int color, boolean isMolten) {
             this.name = name;
 
-            ResourceLocation still = WATER_STILL;
-            ResourceLocation flowingTex = WATER_FLOWING;
+            ResourceLocation still = isMolten ? MOLTEN_STILL : WATER_STILL;
+            ResourceLocation flowingTex = isMolten ? MOLTEN_FLOWING : WATER_FLOWING;
 
             int density = isMolten ? 3000 : 1000;
             int viscosity = isMolten ? 6000 : 1000;
