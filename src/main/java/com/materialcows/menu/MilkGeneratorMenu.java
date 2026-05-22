@@ -32,14 +32,15 @@ public class MilkGeneratorMenu extends AbstractContainerMenu {
         this.data = data;
 
         if (be instanceof MilkGeneratorBlockEntity generator) {
-            this.addSlot(new SlotItemHandler(generator.getInventory(), 0, 56, 17) {
+            // Slot 0: Bucket emptying input. X=94, Y=16
+            this.addSlot(new SlotItemHandler(generator.getInventory(), 0, 94, 16) {
                 @Override
                 public boolean mayPlace(ItemStack stack) {
                     return stack.is(Items.MILK_BUCKET) || stack.is(com.materialcows.fluid.ModFluids.LIQUID_MILK.bucket().get());
                 }
             });
-            // Slot 1: Output empty bucket. X=56, Y=53
-            this.addSlot(new SlotItemHandler(generator.getInventory(), 1, 56, 53) {
+            // Slot 1: Output empty bucket. X=94, Y=52
+            this.addSlot(new SlotItemHandler(generator.getInventory(), 1, 94, 52) {
                 @Override
                 public boolean mayPlace(ItemStack stack) {
                     return false;

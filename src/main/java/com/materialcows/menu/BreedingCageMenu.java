@@ -30,29 +30,29 @@ public class BreedingCageMenu extends AbstractContainerMenu {
         this.data = data;
 
         if (be instanceof BreedingCageBlockEntity cage) {
-            // Slot 0: Parent 1 (X=44, Y=17)
-            this.addSlot(new SlotItemHandler(cage.getInventory(), 0, 44, 17) {
+            // Slot 0: Parent 1 (X=43, Y=17)
+            this.addSlot(new SlotItemHandler(cage.getInventory(), 0, 43, 17) {
                 @Override
                 public boolean mayPlace(ItemStack stack) {
                     return stack.is(Materialcows.CAPTURED_COW.get());
                 }
             });
-            // Slot 1: Parent 2 (X=44, Y=53)
-            this.addSlot(new SlotItemHandler(cage.getInventory(), 1, 44, 53) {
+            // Slot 1: Parent 2 (X=43, Y=53)
+            this.addSlot(new SlotItemHandler(cage.getInventory(), 1, 43, 53) {
                 @Override
                 public boolean mayPlace(ItemStack stack) {
                     return stack.is(Materialcows.CAPTURED_COW.get());
                 }
             });
-            // Slot 2: Wheat (X=80, Y=53)
-            this.addSlot(new SlotItemHandler(cage.getInventory(), 2, 80, 53) {
+            // Slot 2: Wheat (X=78, Y=49)
+            this.addSlot(new SlotItemHandler(cage.getInventory(), 2, 78, 49) {
                 @Override
                 public boolean mayPlace(ItemStack stack) {
                     return stack.is(Items.WHEAT);
                 }
             });
-            // Slot 3: Output (X=116, Y=35)
-            this.addSlot(new SlotItemHandler(cage.getInventory(), 3, 116, 35) {
+            // Slot 3: Output (X=117, Y=35)
+            this.addSlot(new SlotItemHandler(cage.getInventory(), 3, 117, 35) {
                 @Override
                 public boolean mayPlace(ItemStack stack) {
                     return false;

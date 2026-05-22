@@ -32,7 +32,7 @@ public class CowCageMenu extends AbstractContainerMenu {
         this.data = data;
 
         if (be instanceof CowCageBlockEntity cage) {
-            this.addSlot(new SlotItemHandler(cage.getInventory(), 0, 80, 20) {
+            this.addSlot(new SlotItemHandler(cage.getInventory(), 0, 129, 34) {
                 @Override
                 public boolean mayPlace(ItemStack stack) {
                     return stack.is(Materialcows.CAPTURED_COW.get()) || stack.is(Materialcows.MATERIAL_COW_SPAWN_EGG.get());
@@ -49,14 +49,14 @@ public class CowCageMenu extends AbstractContainerMenu {
                 }
             });
             // Slot 1: Empty bucket input
-            this.addSlot(new SlotItemHandler(cage.getInventory(), 1, 35, 51) {
+            this.addSlot(new SlotItemHandler(cage.getInventory(), 1, 79, 16) {
                 @Override
                 public boolean mayPlace(ItemStack stack) {
                     return stack.is(Items.BUCKET);
                 }
             });
             // Slot 2: Output bucket
-            this.addSlot(new SlotItemHandler(cage.getInventory(), 2, 125, 51) {
+            this.addSlot(new SlotItemHandler(cage.getInventory(), 2, 79, 52) {
                 @Override
                 public boolean mayPlace(ItemStack stack) {
                     return false;

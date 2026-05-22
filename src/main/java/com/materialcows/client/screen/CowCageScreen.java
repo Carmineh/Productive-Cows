@@ -17,9 +17,11 @@ import java.util.List;
 
 public class CowCageScreen extends AbstractContainerScreen<CowCageMenu> {
 
+    private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(Materialcows.MODID, "textures/gui/cow_cage.png");
+
     public CowCageScreen(CowCageMenu menu, Inventory playerInventory, Component title) {
         super(menu, playerInventory, title);
-        this.imageWidth = 176;
+        this.imageWidth = 202;
         this.imageHeight = 166;
     }
 
@@ -45,29 +47,12 @@ public class CowCageScreen extends AbstractContainerScreen<CowCageMenu> {
         int x = (this.width - this.imageWidth) / 2;
         int y = (this.height - this.imageHeight) / 2;
 
-        // Draw vanilla gray 3D background panel
-        drawVanillaPanel(guiGraphics, x, y, this.imageWidth, this.imageHeight);
+        // Draw main custom background texture
+        guiGraphics.blit(TEXTURE, x, y, 0, 0, this.imageWidth, this.imageHeight, 220, 166);
 
-        // Draw machine slots
-        drawVanillaSlot(guiGraphics, x + 80, y + 20); // Egg slot
-        drawVanillaSlot(guiGraphics, x + 35, y + 51); // Empty bucket slot
-        drawVanillaSlot(guiGraphics, x + 125, y + 51); // Output filled slot
-
-        // Draw Player Inventory slots (3x9)
-        for (int i = 0; i < 3; ++i) {
-            for (int j = 0; j < 9; ++j) {
-                drawVanillaSlot(guiGraphics, x + 8 + j * 18, y + 84 + i * 18);
-            }
-        }
-        // Player Hotbar slots (1x9)
-        for (int k = 0; k < 9; ++k) {
-            drawVanillaSlot(guiGraphics, x + 8 + k * 18, y + 142);
-        }
-
-        // Draw Fluid Tank Gauge Frame (X=10, Y=17, Width=18, Height=52)
-        int gaugeX = x + 10;
-        int gaugeY = y + 17;
-        drawVanillaSlotFrame(guiGraphics, gaugeX - 1, gaugeY - 1, gaugeX + 19, gaugeY + 53);
+        // --- GAUGE 1: FLUID TANK (Left: X=28, Y=16, Width=42, Height=52) ---
+        int gaugeX = x + 28;
+        int gaugeY = y + 16;
 
         // Render fluid contents if available
         if (menu.getBlockEntity() instanceof CowCageBlockEntity cage) {
@@ -75,14 +60,10 @@ public class CowCageScreen extends AbstractContainerScreen<CowCageMenu> {
             int amount = tank.getFluidAmount();
             if (amount > 0 && !tank.getFluid().isEmpty()) {
                 int color = getFluidColor(tank.getFluid().getFluid());
-                int fillHeight = Math.min(50, (amount * 50) / 8000);
+                int fillHeight = Math.min(52, (amount * 52) / 8000);
                 
-                // Draw fluid column
-                int fluidTopY = gaugeY + 51 - fillHeight;
-                guiGraphics.fill(gaugeX + 1, fluidTopY, gaugeX + 17, gaugeY + 51, 0xFF000000 | color);
-                
-                // Draw dynamic shine overlay
-                guiGraphics.fill(gaugeX + 1, fluidTopY, gaugeX + 4, gaugeY + 51, 0x40FFFFFF);
+                int fluidTopY = gaugeY + 52 - fillHeight;
+                guiGraphics.fill(gaugeX, fluidTopY, gaugeX + 42, gaugeY + 52, 0xFF000000 | color);
             }
         }
 
@@ -91,38 +72,13 @@ public class CowCageScreen extends AbstractContainerScreen<CowCageMenu> {
             int timer = menu.getMilkingTimer();
             if (timer > 0 && timer < 400) {
                 int progress = ((400 - timer) * 16) / 400; // 16 pixels max
-                // Draw a small custom loading bar below the egg slot
-                guiGraphics.fill(x + 80, y + 38, x + 96, y + 41, 0xFF373737);
-                guiGraphics.fill(x + 80, y + 38, x + 80 + progress, y + 40, 0xFF5DADE2); // Elegant blue loading indicator
+                guiGraphics.fill(x + 129, y + 52, x + 145, y + 54, 0xFF373737);
+                guiGraphics.fill(x + 129, y + 52, x + 129 + progress, y + 54, 0xFF5DADE2);
             }
         }
     }
 
-    private void drawVanillaPanel(GuiGraphics guiGraphics, int x, int y, int width, int height) {
-        // Main panel body
-        guiGraphics.fill(x, y, x + width, y + height, 0xFFC6C6C6);
-        // Highlight borders (top and left)
-        guiGraphics.fill(x, y, x + width, y + 1, 0xFFFFFFFF);
-        guiGraphics.fill(x, y, x + 1, y + height, 0xFFFFFFFF);
-        // Shadow borders (bottom and right)
-        guiGraphics.fill(x, y + height - 1, x + width, y + height, 0xFF555555);
-        guiGraphics.fill(x + width - 1, y, x + width, y + height, 0xFF555555);
-    }
 
-    private void drawVanillaSlot(GuiGraphics guiGraphics, int slotX, int slotY) {
-        drawVanillaSlotFrame(guiGraphics, slotX - 1, slotY - 1, slotX + 17, slotY + 17);
-    }
-
-    private void drawVanillaSlotFrame(GuiGraphics guiGraphics, int x1, int y1, int x2, int y2) {
-        // Inner background of the slot
-        guiGraphics.fill(x1, y1, x2, y2, 0xFF8B8B8B);
-        // Top/Left dark inset shadows
-        guiGraphics.fill(x1, y1, x2, y1 + 1, 0xFF373737);
-        guiGraphics.fill(x1, y1, x1 + 1, y2, 0xFF373737);
-        // Bottom/Right light sporgenti reflections
-        guiGraphics.fill(x1, y2 - 1, x2, y2, 0xFFFFFFFF);
-        guiGraphics.fill(x2 - 1, y1, x2, y2, 0xFFFFFFFF);
-    }
 
     private int getFluidColor(net.minecraft.world.level.material.Fluid fluid) {
         ResourceLocation key = BuiltInRegistries.FLUID.getKey(fluid);
@@ -139,10 +95,10 @@ public class CowCageScreen extends AbstractContainerScreen<CowCageMenu> {
     private void renderFluidTooltip(GuiGraphics guiGraphics, int mouseX, int mouseY) {
         int x = (this.width - this.imageWidth) / 2;
         int y = (this.height - this.imageHeight) / 2;
-        int gaugeX = x + 10;
-        int gaugeY = y + 17;
+        int gaugeX = x + 28;
+        int gaugeY = y + 16;
 
-        if (mouseX >= gaugeX && mouseX < gaugeX + 18 && mouseY >= gaugeY && mouseY < gaugeY + 52) {
+        if (mouseX >= gaugeX && mouseX < gaugeX + 42 && mouseY >= gaugeY && mouseY < gaugeY + 52) {
             if (menu.getBlockEntity() instanceof CowCageBlockEntity cage) {
                 FluidTank tank = cage.getFluidTank();
                 List<Component> text = new ArrayList<>();
