@@ -1,0 +1,11 @@
+{
+  "name": "Brass",
+  "tier": 3,
+  "fluid": "productivecows:molten_brass",
+  "hex_color": "#E5BD54",
+  "breedChance": 0.05,
+  "baseYield": 100,
+  "parent1": "productivecows:zinc",
+  "parent2": "productivecows:copper",
+  "cooling_result_tag": "c:ingots/brass"
+}

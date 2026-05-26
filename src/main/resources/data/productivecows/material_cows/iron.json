@@ -1,0 +1,10 @@
+{
+  "name": "Iron Cow",
+  "tier": 2,
+  "hex_color": "#D8D8D8",
+  "fluid": "productivecows:molten_iron",
+  "parent1": "productivecows:copper",
+  "parent2": "productivecows:lava",
+  "breed_chance": 0.3,
+  "cooling_result": "minecraft:iron_ingot"
+}

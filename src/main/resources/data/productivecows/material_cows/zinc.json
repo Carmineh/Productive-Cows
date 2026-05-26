@@ -1,0 +1,11 @@
+{
+  "name": "Zinc",
+  "tier": 2,
+  "fluid": "productivecows:molten_zinc",
+  "hex_color": "#8FB8A8",
+  "breedChance": 0.2,
+  "baseYield": 100,
+  "parent1": "productivecows:iron",
+  "parent2": "productivecows:copper",
+  "cooling_result_tag": "c:ingots/zinc"
+}

@@ -1,0 +1,10 @@
+{
+  "name": "Copper Cow",
+  "tier": 2,
+  "hex_color": "#E77C56",
+  "fluid": "productivecows:molten_copper",
+  "parent1": "productivecows:coal",
+  "parent2": "productivecows:stone",
+  "breed_chance": 0.4,
+  "cooling_result": "minecraft:copper_ingot"
+}

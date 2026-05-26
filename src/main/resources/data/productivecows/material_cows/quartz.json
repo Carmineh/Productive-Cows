@@ -1,0 +1,10 @@
+{
+  "name": "Quartz Cow",
+  "tier": 4,
+  "hex_color": "#EAE5DE",
+  "fluid": "productivecows:liquid_quartz",
+  "parent1": "productivecows:gold",
+  "parent2": "productivecows:obsidian",
+  "breed_chance": 0.15,
+  "cooling_result": "minecraft:quartz"
+}

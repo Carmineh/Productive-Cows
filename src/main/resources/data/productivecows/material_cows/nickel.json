@@ -1,0 +1,11 @@
+{
+  "name": "Nickel",
+  "tier": 3,
+  "fluid": "productivecows:molten_nickel",
+  "hex_color": "#C8C697",
+  "breedChance": 0.15,
+  "baseYield": 100,
+  "parent1": "productivecows:iron",
+  "parent2": "productivecows:copper",
+  "cooling_result_tag": "c:ingots/nickel"
+}

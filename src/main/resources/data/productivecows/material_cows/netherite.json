@@ -1,0 +1,10 @@
+{
+  "name": "Netherite Cow",
+  "tier": 5,
+  "hex_color": "#31292A",
+  "fluid": "productivecows:molten_netherite",
+  "parent1": "productivecows:diamond",
+  "parent2": "productivecows:quartz",
+  "breed_chance": 0.05,
+  "cooling_result": "minecraft:netherite_scrap"
+}

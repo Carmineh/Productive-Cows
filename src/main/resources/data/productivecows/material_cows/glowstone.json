@@ -1,0 +1,10 @@
+{
+  "name": "Glowstone Cow",
+  "tier": 4,
+  "hex_color": "#FFBC5E",
+  "fluid": "productivecows:liquid_glowstone",
+  "parent1": "productivecows:gold",
+  "parent2": "productivecows:redstone",
+  "breed_chance": 0.2,
+  "cooling_result": "minecraft:glowstone_dust"
+}

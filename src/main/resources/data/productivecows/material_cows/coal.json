@@ -1,0 +1,10 @@
+{
+  "name": "Coal Cow",
+  "tier": 2,
+  "hex_color": "#2A2A2A",
+  "fluid": "productivecows:liquid_coal",
+  "parent1": "productivecows:lava",
+  "parent2": "productivecows:stone",
+  "breed_chance": 0.5,
+  "cooling_result": "minecraft:coal"
+}

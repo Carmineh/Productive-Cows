@@ -1,0 +1,11 @@
+{
+  "name": "Tin",
+  "tier": 2,
+  "fluid": "productivecows:molten_tin",
+  "hex_color": "#AAB9C4",
+  "breedChance": 0.2,
+  "baseYield": 100,
+  "parent1": "productivecows:iron",
+  "parent2": "productivecows:coal",
+  "cooling_result_tag": "c:ingots/tin"
+}

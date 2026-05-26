@@ -1,0 +1,10 @@
+{
+  "name": "Emerald Cow",
+  "tier": 4,
+  "hex_color": "#17DD62",
+  "fluid": "productivecows:liquid_emerald",
+  "parent1": "productivecows:diamond",
+  "parent2": "productivecows:lapis",
+  "breed_chance": 0.1,
+  "cooling_result": "minecraft:emerald"
+}

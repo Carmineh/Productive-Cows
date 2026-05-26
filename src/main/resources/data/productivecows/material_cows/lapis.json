@@ -1,0 +1,10 @@
+{
+  "name": "Lapis Cow",
+  "tier": 3,
+  "hex_color": "#1044A8",
+  "fluid": "productivecows:liquid_lapis",
+  "parent1": "productivecows:copper",
+  "parent2": "productivecows:water",
+  "breed_chance": 0.25,
+  "cooling_result": "minecraft:lapis_lazuli"
+}

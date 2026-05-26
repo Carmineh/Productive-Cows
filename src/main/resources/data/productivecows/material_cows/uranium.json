@@ -1,0 +1,11 @@
+{
+  "name": "Uranium",
+  "tier": 4,
+  "fluid": "productivecows:molten_uranium",
+  "hex_color": "#6F8E6B",
+  "breedChance": 0.1,
+  "baseYield": 100,
+  "parent1": "productivecows:lead",
+  "parent2": "productivecows:diamond",
+  "cooling_result_tag": "c:ingots/uranium"
+}

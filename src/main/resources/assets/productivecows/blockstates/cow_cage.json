@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "productivecows:block/cow_cage"
+    },
+    "facing=east": {
+      "model": "productivecows:block/cow_cage",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "productivecows:block/cow_cage",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "productivecows:block/cow_cage",
+      "y": 270
+    }
+  }
+}

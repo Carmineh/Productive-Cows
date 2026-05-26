@@ -1,0 +1,11 @@
+{
+  "name": "Silver",
+  "tier": 3,
+  "fluid": "productivecows:molten_silver",
+  "hex_color": "#BFCAD1",
+  "breedChance": 0.15,
+  "baseYield": 100,
+  "parent1": "productivecows:gold",
+  "parent2": "productivecows:quartz",
+  "cooling_result_tag": "c:ingots/silver"
+}

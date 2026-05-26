@@ -1,0 +1,11 @@
+{
+  "name": "Lumium",
+  "tier": 5,
+  "fluid": "productivecows:molten_lumium",
+  "hex_color": "#F3EEA2",
+  "breedChance": 0.02,
+  "baseYield": 100,
+  "parent1": "productivecows:tin",
+  "parent2": "productivecows:silver",
+  "cooling_result_tag": "c:ingots/lumium"
+}

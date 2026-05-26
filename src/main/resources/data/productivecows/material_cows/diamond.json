@@ -1,0 +1,10 @@
+{
+  "name": "Diamond Cow",
+  "tier": 4,
+  "hex_color": "#55FFFF",
+  "fluid": "productivecows:liquid_diamond",
+  "parent1": "productivecows:iron",
+  "parent2": "productivecows:lapis",
+  "breed_chance": 0.1,
+  "cooling_result": "minecraft:diamond"
+}

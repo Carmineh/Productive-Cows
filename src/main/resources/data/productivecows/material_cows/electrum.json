@@ -1,0 +1,11 @@
+{
+  "name": "Electrum",
+  "tier": 4,
+  "fluid": "productivecows:molten_electrum",
+  "hex_color": "#F3D263",
+  "breedChance": 0.05,
+  "baseYield": 100,
+  "parent1": "productivecows:gold",
+  "parent2": "productivecows:silver",
+  "cooling_result_tag": "c:ingots/electrum"
+}

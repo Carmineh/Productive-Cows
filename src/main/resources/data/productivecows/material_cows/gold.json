@@ -1,0 +1,10 @@
+{
+  "name": "Gold Cow",
+  "tier": 3,
+  "hex_color": "#FFE14B",
+  "fluid": "productivecows:molten_gold",
+  "parent1": "productivecows:iron",
+  "parent2": "productivecows:obsidian",
+  "breed_chance": 0.2,
+  "cooling_result": "minecraft:gold_ingot"
+}

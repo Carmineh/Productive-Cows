@@ -1,0 +1,10 @@
+{
+  "name": "Obsidian Cow",
+  "tier": 2,
+  "hex_color": "#191226",
+  "fluid": "productivecows:liquid_obsidian",
+  "parent1": "productivecows:lava",
+  "parent2": "productivecows:water",
+  "breed_chance": 0.3,
+  "cooling_result": "minecraft:obsidian"
+}

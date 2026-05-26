@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "productivecows:block/liquid_cooler"
+    },
+    "facing=east": {
+      "model": "productivecows:block/liquid_cooler",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "productivecows:block/liquid_cooler",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "productivecows:block/liquid_cooler",
+      "y": 270
+    }
+  }
+}
