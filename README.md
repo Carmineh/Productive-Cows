@@ -5,6 +5,7 @@
   
   [![NeoForge](https://img.shields.io/badge/NeoForge-1.21.1-orange.svg)](https://neoforged.net/)
   [![CurseForge](https://img.shields.io/badge/CurseForge-Available-f16436.svg)](https://www.curseforge.com/minecraft/mc-mods/productive-cows)
+  [![Modrinth](https://img.shields.io/badge/Modrinth-Pending-1bd96a.svg)](#)
   [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 </div>
 

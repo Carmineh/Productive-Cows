@@ -54,6 +54,8 @@ public class Config {
 
     @SubscribeEvent
     static void onLoad(final ModConfigEvent event) {
+        if (event instanceof ModConfigEvent.Unloading) return;
+
         breedingCooldownTicks = BREEDING_COOLDOWN.get();
 
         basicCoolerCapacity = BASIC_COOLER_CAPACITY.get();
