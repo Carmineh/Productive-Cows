@@ -15,7 +15,7 @@ Fully compatible with popular pipe and energy mods like Mekanism, Pipez, Create,
 
 ---
 
-## ðŸ› ï¸ Adding Custom Cows (For Modpack Devs)
+## Adding Custom Cows (For Modpack Devs)
 
 ProductiveCows is **100% Data-Driven**. You can add new cows without writing a single line of Java by creating a simple JSON file in your Datapack (or via KubeJS)!
 
@@ -39,7 +39,7 @@ That's it! The mod will automatically register the cow and process the cooling i
 
 ---
 
-## ðŸ› Issues and Bug Reports
+## Issues and Bug Reports
 
 Found a bug or have a suggestion? We'd love to hear it! 
 Please open an issue in the **[Issues Tab](../../issues)**. 
