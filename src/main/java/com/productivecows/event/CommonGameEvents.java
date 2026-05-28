@@ -23,11 +23,16 @@ public class CommonGameEvents {
     }
 
     @SubscribeEvent
-    public static void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
-        if (event.getEntity() instanceof ServerPlayer serverPlayer) {
-            // When a player logs in, send the loaded cow definitions from Server to Client
-            var definitions = new ArrayList<>(MaterialCowDataLoader.getDefinitions().values());
-            PacketDistributor.sendToPlayer(serverPlayer, new SyncCowDefinitionsPayload(definitions));
+    public static void onDatapackSync(net.neoforged.neoforge.event.OnDatapackSyncEvent event) {
+        var definitions = new ArrayList<>(MaterialCowDataLoader.getDefinitions().values());
+        var payload = new SyncCowDefinitionsPayload(definitions);
+        
+        if (event.getPlayer() != null) {
+            PacketDistributor.sendToPlayer(event.getPlayer(), payload);
+        } else {
+            for (ServerPlayer player : event.getPlayerList().getPlayers()) {
+                PacketDistributor.sendToPlayer(player, payload);
+            }
         }
     }
 
