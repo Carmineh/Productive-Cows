@@ -29,6 +29,7 @@ ProductiveCowsEvents.registerCows(event => {
         .tier(5)
         .fluid('productivecows:molten_vibranium')
         .color('#800080')
+        .baseYield(100)
         .breedChance(0.05)
         .parents('productivecows:diamond', 'productivecows:obsidian')
         .coolingResult('c:ingots/vibranium')
@@ -44,6 +45,7 @@ Create a file in your datapack at: `data/<your_namespace>/cows/my_custom_cow.jso
   "tier": 5,
   "hex_color": "#800080",
   "fluid": "productivecows:molten_vibranium",
+  "base_yield": 100,
   "breed_chance": 0.05,
   "parent1": "productivecows:diamond",
   "parent2": "productivecows:obsidian",
