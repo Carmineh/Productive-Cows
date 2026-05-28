@@ -19,6 +19,7 @@ public class CowBuilder {
     private ResourceLocation parent1;
     private ResourceLocation parent2;
     private double breedChance = 1.0;
+    private int baseYield = 100;
     private ResourceLocation coolingResult;
     private String coolingResultTag;
 
@@ -83,6 +84,11 @@ public class CowBuilder {
         return this;
     }
 
+    public CowBuilder baseYield(int baseYield) {
+        this.baseYield = baseYield;
+        return this;
+    }
+
     public CowBuilder coolingResult(String result) {
         if (result.startsWith("#")) {
             this.coolingResultTag = result.substring(1);
@@ -110,7 +116,7 @@ public class CowBuilder {
             return;
         }
 
-        CowDefinition def = new CowDefinition(id, name, tier, hexColor, fluidId, parent1, parent2, breedChance, coolingResult, coolingResultTag);
+        CowDefinition def = new CowDefinition(id, name, tier, hexColor, fluidId, parent1, parent2, breedChance, baseYield, coolingResult, coolingResultTag);
         event.register(id, def);
     }
 }

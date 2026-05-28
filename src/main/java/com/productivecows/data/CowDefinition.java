@@ -18,6 +18,7 @@ public record CowDefinition(
         ResourceLocation parent1,
         ResourceLocation parent2,
         double breedChance,
+        int baseYield,
         ResourceLocation coolingResult,
         String coolingResultTag
 ) {
@@ -43,15 +44,16 @@ public record CowDefinition(
             ResourceLocation.CODEC.optionalFieldOf("parent1").forGetter(def -> Optional.ofNullable(def.parent1())),
             ResourceLocation.CODEC.optionalFieldOf("parent2").forGetter(def -> Optional.ofNullable(def.parent2())),
             Codec.DOUBLE.optionalFieldOf("breed_chance", 1.0).forGetter(CowDefinition::breedChance),
+            Codec.INT.optionalFieldOf("base_yield", 100).forGetter(CowDefinition::baseYield),
             ResourceLocation.CODEC.optionalFieldOf("cooling_result").forGetter(def -> Optional.ofNullable(def.coolingResult())),
             Codec.STRING.optionalFieldOf("cooling_result_tag").forGetter(def -> Optional.ofNullable(def.coolingResultTag()))
-    ).apply(instance, (name, tier, hexColor, fluidId, p1Opt, p2Opt, breedChance, coolingResultOpt, coolingTagOpt) -> new CowDefinition(
-            null, name, tier, hexColor, fluidId, p1Opt.orElse(null), p2Opt.orElse(null), breedChance, coolingResultOpt.orElse(null), coolingTagOpt.orElse(null)
+    ).apply(instance, (name, tier, hexColor, fluidId, p1Opt, p2Opt, breedChance, baseYield, coolingResultOpt, coolingTagOpt) -> new CowDefinition(
+            null, name, tier, hexColor, fluidId, p1Opt.orElse(null), p2Opt.orElse(null), breedChance, baseYield, coolingResultOpt.orElse(null), coolingTagOpt.orElse(null)
     )));
 
     // Convenience method to attach the ID after reading from a JSON pack
     public CowDefinition withId(ResourceLocation id) {
-        return new CowDefinition(id, this.name, this.tier, this.hexColor, this.fluidId, this.parent1, this.parent2, this.breedChance, this.coolingResult, this.coolingResultTag);
+        return new CowDefinition(id, this.name, this.tier, this.hexColor, this.fluidId, this.parent1, this.parent2, this.breedChance, this.baseYield, this.coolingResult, this.coolingResultTag);
     }
 
     // Modern NeoForge 1.21.1 StreamCodec for synchronization over the network, written manually to bypass the 9-argument limit of StreamCodec.composite
@@ -66,9 +68,10 @@ public record CowDefinition(
             ResourceLocation parent1 = buffer.readBoolean() ? ResourceLocation.STREAM_CODEC.decode(buffer) : null;
             ResourceLocation parent2 = buffer.readBoolean() ? ResourceLocation.STREAM_CODEC.decode(buffer) : null;
             double breedChance = buffer.readDouble();
+            int baseYield = ByteBufCodecs.VAR_INT.decode(buffer);
             ResourceLocation coolingResult = buffer.readBoolean() ? ResourceLocation.STREAM_CODEC.decode(buffer) : null;
             String coolingResultTag = buffer.readBoolean() ? ByteBufCodecs.STRING_UTF8.decode(buffer) : null;
-            return new CowDefinition(id, name, tier, hexColor, fluidId, parent1, parent2, breedChance, coolingResult, coolingResultTag);
+            return new CowDefinition(id, name, tier, hexColor, fluidId, parent1, parent2, breedChance, baseYield, coolingResult, coolingResultTag);
         }
 
         @Override
@@ -94,6 +97,7 @@ public record CowDefinition(
             }
 
             buffer.writeDouble(val.breedChance());
+            ByteBufCodecs.VAR_INT.encode(buffer, val.baseYield());
 
             if (val.coolingResult() != null) {
                 buffer.writeBoolean(true);
