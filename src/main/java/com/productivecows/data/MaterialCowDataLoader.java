@@ -20,8 +20,8 @@ public class MaterialCowDataLoader extends SimpleJsonResourceReloadListener {
     private static final Logger LOGGER = LogUtils.getLogger();
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
     
-    // Directory we read from: data/<namespace>/material_cows/
-    private static final String DIRECTORY = "material_cows";
+    // Directory we read from: data/<namespace>/cows/
+    private static final String DIRECTORY = "cows";
     
     private static Map<ResourceLocation, CowDefinition> DEFINITIONS = Collections.emptyMap();
 
@@ -52,6 +52,10 @@ public class MaterialCowDataLoader extends SimpleJsonResourceReloadListener {
                         }
                     });
         });
+
+        if (net.neoforged.fml.ModList.get().isLoaded("kubejs")) {
+            com.productivecows.compat.kubejs.KubeJSCompat.fireRegisterCowsEvent(newDefinitions);
+        }
 
         DEFINITIONS = Map.copyOf(newDefinitions);
         LOGGER.info("Successfully loaded {} material cow definitions.", DEFINITIONS.size());

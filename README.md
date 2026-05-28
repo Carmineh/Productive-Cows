@@ -15,23 +15,39 @@ Fully compatible with popular pipe and energy mods like Mekanism, Pipez, Create,
 
 ---
 
-## Adding Custom Cows (For Modpack Devs)
+## 🛠️ Adding Custom Cows (For Modpack Devs)
 
-ProductiveCows is **100% Data-Driven**. You can add new cows without writing a single line of Java by creating a simple JSON file in your Datapack (or via KubeJS)!
+ProductiveCows is **100% Data-Driven**. You can add new cows without writing a single line of Java by creating a simple JSON file in your Datapack or via KubeJS!
 
-Create a file in your datapack at: `data/<your_namespace>/material_cows/my_custom_cow.json`
+### Method 1: KubeJS (Recommended)
+You can easily register new cows in your `server_scripts`:
+
+```javascript
+ProductiveCowsEvents.registerCows(event => {
+    event.create('vibranium')
+        .name('Vibranium')
+        .tier(5)
+        .fluid('productivecows:molten_vibranium')
+        .color('#800080')
+        .breedChance(0.05)
+        .parents('productivecows:diamond', 'productivecows:obsidian')
+        .coolingResult('c:ingots/vibranium')
+})
+```
+
+### Method 2: JSON Datapack
+Create a file in your datapack at: `data/<your_namespace>/cows/my_custom_cow.json`
 
 ```json
 {
   "name": "Vibranium",
   "tier": 5,
-  "fluidId": "productivecows:molten_vibranium",
-  "materialColor": "#800080",
-  "breedChance": 0.05,
-  "baseYield": 100,
+  "hex_color": "#800080",
+  "fluid": "productivecows:molten_vibranium",
+  "breed_chance": 0.05,
   "parent1": "productivecows:diamond",
   "parent2": "productivecows:obsidian",
-  "coolingResultTag": "c:ingots/vibranium"
+  "cooling_result_tag": "c:ingots/vibranium"
 }
 ```
 
